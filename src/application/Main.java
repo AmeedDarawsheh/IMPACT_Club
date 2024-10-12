@@ -16,6 +16,7 @@ public class Main extends Application {
 			primaryStage.show();
 			primaryStage.setTitle("IMPACT Club");
 			primaryStage.setResizable(false);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
