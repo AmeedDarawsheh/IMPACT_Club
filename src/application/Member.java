@@ -1,5 +1,5 @@
 package application;
 
-public class Member {
+public class Member extends Person {
 
 }

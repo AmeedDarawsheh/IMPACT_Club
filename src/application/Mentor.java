@@ -1,5 +1,5 @@
 package application;
 
-public class Mentor {
+public class Mentor extends Person {
 
 }

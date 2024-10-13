@@ -1,5 +1,4 @@
 package application;
-
-public class Leader {
+public class Leader extends Person {
 
 }
