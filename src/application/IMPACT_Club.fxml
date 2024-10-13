@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+<AnchorPane prefHeight="460.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
    <children>
       <Pane layoutX="449.0" prefHeight="460.0" prefWidth="332.0" style="-fx-background-color: #16c373;">
          <children>
@@ -18,7 +18,7 @@
                   <Font name="Cambria Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: white;" text="Sign up">
+            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#signUp" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: white;" text="Sign up">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
@@ -38,7 +38,7 @@
       </Pane>
       <Pane prefHeight="460.0" prefWidth="449.0" style="-fx-background-color: white;">
          <children>
-            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #16c373;" text="Sign In">
+            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" onAction="#signIn" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #16c373;" text="Sign In">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>

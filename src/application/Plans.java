@@ -1,5 +1,4 @@
 package application;
-
 import java.sql.Date;
 
 public class Plans extends FanancialPlan {
