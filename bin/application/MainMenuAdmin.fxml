@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936;">
+         <children>
+            <Button layoutY="249.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="OverView">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="19.0" layoutY="81.0" text="IMPACT Club" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button layoutY="289.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add Member">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutY="329.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add Project">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutY="369.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add plan">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="74.0" layoutY="729.0" mnemonicParsing="false" text="Logout" />
+         </children></Pane>
+      <Pane layoutX="200.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="56.0" layoutY="8.0" text="Overview" textFill="#121826">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <AnchorPane layoutX="200.0" layoutY="79.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
+         <children>
+            <Pane layoutX="16.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="54.0" layoutY="31.0" text="Members" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="591.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="69.0" layoutY="31.0" text="Plans" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="302.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="59.0" layoutY="31.0" text="Projects" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane layoutX="877.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="65.0" layoutY="31.0" text="Active" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <StackedBarChart layoutX="14.0" layoutY="118.0" legendSide="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="368.0" prefWidth="558.0" title="Club Growth">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </StackedBarChart>
+            <LineChart layoutX="591.0" layoutY="118.0" prefHeight="368.0" prefWidth="558.0" title="Activity overview">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Pane layoutY="486.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
+               <children>
+                  <Label layoutX="26.0" layoutY="6.0" text="Recent Activity" textFill="#121826">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <Line endX="1065.0" endY="-0.5" fill="BLACK" layoutX="100.0" layoutY="45.0" smooth="false" startX="-100.0" stroke="#5b5b5b" />
+                  <Label layoutX="26.0" layoutY="53.0" text="New user registration" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

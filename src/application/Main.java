@@ -9,14 +9,13 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("IMPACT_Club.fxml"));			
+			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));			
 			Scene scene = new Scene(root,780,460);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			primaryStage.setTitle("IMPACT Club");
-			primaryStage.setResizable(false);
-			
+			primaryStage.setResizable(false);			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
