@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="460.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
    <children>
-      <Pane layoutX="449.0" prefHeight="460.0" prefWidth="332.0" style="-fx-background-color: #16c373;">
+      <Pane layoutX="449.0" prefHeight="460.0" prefWidth="332.0" style="-fx-background-color: #212936;">
          <children>
             <Label layoutX="36.0" layoutY="144.0" text="Welcome Agian Sir" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
@@ -33,21 +33,21 @@
                   <Font name="Cambria Bold" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="245.0" layoutY="421.0" mnemonicParsing="false" style="-fx-background-color: #16c373;" text="Contact us" textFill="WHITE" />
+            <Button layoutX="245.0" layoutY="421.0" mnemonicParsing="false" style="-fx-background-color: #212936;" text="Contact us" textFill="WHITE" />
          </children>
       </Pane>
       <Pane prefHeight="460.0" prefWidth="449.0" style="-fx-background-color: white;">
          <children>
-            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" onAction="#signIn" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #16c373;" text="Sign In">
+            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" onAction="#signIn" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #212936;" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
             </Button>
-            <TextField layoutX="87.0" layoutY="212.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #16c373;">
+            <TextField fx:id="emailTextField" layoutX="87.0" layoutY="212.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #212936;">
                <font>
                   <Font name="Cambria Bold" size="12.0" />
                </font></TextField>
-            <Label layoutX="127.0" layoutY="105.0" prefHeight="63.0" prefWidth="196.0" text="Sign In" textAlignment="JUSTIFY" textFill="#16c373">
+            <Label layoutX="127.0" layoutY="105.0" prefHeight="63.0" prefWidth="196.0" text="Sign In" textAlignment="JUSTIFY" textFill="#212936">
                <font>
                   <Font name="Verdana Bold" size="46.0" />
                </font>
@@ -63,7 +63,7 @@
                </font>
             </Label>
             <Button layoutX="223.0" layoutY="294.0" mnemonicParsing="false" style="-fx-background-color: white;" text="forget you'r password ?" />
-            <PasswordField layoutX="87.0" layoutY="257.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #16c373;" />
+            <PasswordField fx:id="passwordField" layoutX="87.0" layoutY="257.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #212936;" />
             <CheckBox layoutX="91.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Remmber me" textAlignment="JUSTIFY" />
          </children>
       </Pane>

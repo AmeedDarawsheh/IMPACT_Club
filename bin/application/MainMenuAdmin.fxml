@@ -15,7 +15,7 @@
    <children>
       <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936;">
          <children>
-            <Button layoutY="249.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="OverView">
+            <Button layoutY="200.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936;" text="OverView" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -29,22 +29,22 @@
                   </Label>
                </children>
             </Pane>
-            <Button layoutY="289.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add Member">
+            <Button layoutY="256.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936;" text="Members" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutY="329.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add Project">
+            <Button layoutY="312.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936;" text="Projects" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutY="369.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Add plan">
+            <Button layoutY="368.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button layoutX="74.0" layoutY="729.0" mnemonicParsing="false" text="Logout" />
+            <Button layoutX="14.0" layoutY="724.0" mnemonicParsing="false" style="-fx-background-color: #212936;" text="Logout" textFill="WHITE" />
          </children></Pane>
       <Pane layoutX="200.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
          <children>
