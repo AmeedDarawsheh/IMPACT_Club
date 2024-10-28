@@ -16,9 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class loginController {
-	private Stage stage ;
+	public Stage stage ;
 	private Scene scene;
-	private Parent root;
+	public Parent root;
 	@FXML
 	TextField emailTextField;
 	@FXML
