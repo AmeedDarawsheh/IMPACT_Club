@@ -5,28 +5,34 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23">
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="6.0" layoutY="7.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
          <children>
             <Pane layoutX="16.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
                <children>
-                  <Label layoutX="54.0" layoutY="31.0" text="Members" textFill="#6c727f">
+                  <Label layoutX="67.0" layoutY="31.0" text="Members" textFill="#6c727f">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                  <Label layoutX="54.0" layoutY="52.0" text="148859" textFill="#212936">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="196.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/group-users.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Pane layoutX="591.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
@@ -41,6 +47,11 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="196.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/roadmap%20(1).png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Pane layoutX="302.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
@@ -55,20 +66,30 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="196.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/portfolio-management.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Pane layoutX="877.0" layoutY="14.0" prefHeight="104.0" prefWidth="270.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
                <children>
-                  <Label layoutX="65.0" layoutY="31.0" text="Active" textFill="#6c727f">
+                  <Label layoutX="65.0" layoutY="28.0" text="Active" textFill="#6c727f">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                  <Label layoutX="41.0" layoutY="51.0" text="148859" textFill="#212936">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="196.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/add-friend.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <StackedBarChart layoutX="14.0" layoutY="118.0" legendSide="TOP" nodeOrientation="LEFT_TO_RIGHT" prefHeight="368.0" prefWidth="558.0" title="Club Growth">
