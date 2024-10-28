@@ -18,7 +18,7 @@
                   <Font name="Cambria Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#signUp" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: white;" text="Sign up">
+            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#signUp" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: white; -fx-background-radius: 100 100 100 100;" text="Sign up">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
@@ -38,12 +38,12 @@
       </Pane>
       <Pane prefHeight="460.0" prefWidth="449.0" style="-fx-background-color: white;">
          <children>
-            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" onAction="#signIn" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #212936;" text="Sign In" textFill="WHITE">
+            <Button cache="true" layoutX="127.0" layoutY="332.0" mnemonicParsing="false" onAction="#signIn" prefHeight="38.0" prefWidth="196.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
             </Button>
-            <TextField fx:id="emailTextField" layoutX="87.0" layoutY="212.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #212936;">
+            <TextField fx:id="emailTextField" layoutX="87.0" layoutY="212.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #212936; -fx-background-insets: 100 100 100 100;">
                <font>
                   <Font name="Cambria Bold" size="12.0" />
                </font></TextField>
