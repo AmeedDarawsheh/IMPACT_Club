@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="697.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MembersController">
+<AnchorPane prefHeight="697.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MembersController">
    <children>
       <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
          <children>
@@ -73,7 +73,7 @@
             <TableView fx:id="memberTable" fixedCellSize="10.0" layoutX="16.0" layoutY="132.0" prefHeight="520.0" prefWidth="1112.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30;">
               <columns>
                   <TableColumn fx:id="idCol" prefWidth="75.0" resizable="false" text="ID" />
-                <TableColumn fx:id="detilsCol" prefWidth="367.0" resizable="false" text="Detils" />
+                <TableColumn fx:id="detilsCol" prefWidth="367.0" resizable="false" text="Details" />
                 <TableColumn fx:id="contactCol" minWidth="0.0" prefWidth="307.0" resizable="false" text="Contact" />
                   <TableColumn fx:id="projectCol" prefWidth="100.0" resizable="false" text="project" />
                   <TableColumn fx:id="dateCol" prefWidth="139.0" resizable="false" text="Member Since" />
