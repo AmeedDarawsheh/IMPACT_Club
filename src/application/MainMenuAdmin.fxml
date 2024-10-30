@@ -109,14 +109,14 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" text="Add Member" visible="false">
+            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/plus.png" />
+                        <Image url="@icons/plus%20(2).png" />
                      </image>
                   </ImageView>
                </graphic>
