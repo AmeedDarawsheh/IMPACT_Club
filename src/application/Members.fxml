@@ -70,12 +70,14 @@
                   </ImageView>
                </children>
             </Pane>
-            <TableView fx:id="membertable" fixedCellSize="10.0" layoutX="16.0" layoutY="132.0" prefHeight="520.0" prefWidth="1112.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30;">
+            <TableView fx:id="memberTable" fixedCellSize="10.0" layoutX="16.0" layoutY="132.0" prefHeight="520.0" prefWidth="1112.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30;">
               <columns>
-                <TableColumn prefWidth="442.0" text="Detils" />
-                <TableColumn minWidth="0.0" prefWidth="400.0" text="Contact" />
-                  <TableColumn prefWidth="133.0" text="project" />
-                  <TableColumn prefWidth="136.0" text="Actions" />
+                  <TableColumn fx:id="idCol" prefWidth="75.0" resizable="false" text="ID" />
+                <TableColumn fx:id="detilsCol" prefWidth="367.0" resizable="false" text="Detils" />
+                <TableColumn fx:id="contactCol" minWidth="0.0" prefWidth="307.0" resizable="false" text="Contact" />
+                  <TableColumn fx:id="projectCol" prefWidth="100.0" resizable="false" text="project" />
+                  <TableColumn fx:id="dateCol" prefWidth="139.0" resizable="false" text="Member Since" />
+                  <TableColumn fx:id="acttionCol" prefWidth="123.0" resizable="false" text="Actions" />
               </columns>
             </TableView>
          </children>
