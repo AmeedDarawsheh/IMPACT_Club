@@ -1,16 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="683.0" prefWidth="1166.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="697.0" prefWidth="1158.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: black;">
+      <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
          <children>
-            <Button layoutX="309.0" layoutY="188.0" mnemonicParsing="false" prefHeight="308.0" prefWidth="548.0" text="Button" />
+            <Pane layoutX="16.0" layoutY="14.0" prefHeight="104.0" prefWidth="360.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
+               <children>
+                  <Label layoutX="67.0" layoutY="31.0" text="Members" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="54.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/group-users.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="768.0" layoutY="14.0" prefHeight="104.0" prefWidth="360.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
+               <children>
+                  <Label layoutX="29.0" layoutY="31.0" text="New This Month" textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="52.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/add.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="392.0" layoutY="14.0" prefHeight="104.0" prefWidth="360.0" style="-fx-background-color: white; -fx-background-radius: 15 15 15 15;">
+               <children>
+                  <Label layoutX="65.0" layoutY="28.0" text="Active " textFill="#6c727f">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="51.0" text="148859" textFill="#212936">
+                     <font>
+                        <Font name="System Bold" size="27.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="286.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/add-friend.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TableView fx:id="membertable" fixedCellSize="10.0" layoutX="16.0" layoutY="132.0" prefHeight="520.0" prefWidth="1112.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30;">
+              <columns>
+                <TableColumn prefWidth="442.0" text="Detils" />
+                <TableColumn minWidth="0.0" prefWidth="400.0" text="Contact" />
+                  <TableColumn prefWidth="133.0" text="project" />
+                  <TableColumn prefWidth="136.0" text="Actions" />
+              </columns>
+            </TableView>
          </children>
-      </Pane>
+      </AnchorPane>
    </children>
 </AnchorPane>
