@@ -25,6 +25,8 @@ public class SageController implements Initializable {
 	private StackPane stackPane;
 	@FXML
 	Label title;
+	@FXML
+	Button addBtn;
 	
 	@Override
 	public void initialize(URL locatian,ResourceBundle resources) {	
@@ -32,7 +34,7 @@ public class SageController implements Initializable {
 			Parent fxml = FXMLLoader.load(getClass().getResource("Overview.fxml"));
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);
-			//title.setText("OverView");
+			title.setText("OverView");
 
 		}catch(IOException ex ) {
 		//	Logger.getLogger(SageController.class.getName()).log(Level.SEVERE,null, ex);
@@ -42,26 +44,35 @@ public class SageController implements Initializable {
 		Parent fxml = FXMLLoader.load(getClass().getResource("Overview.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
-		//title.setText("OverView");
+		title.setText("OverView");
+		addBtn.setVisible(false);
+		addBtn.setText("Add Plan");
 	}
 	public void membersB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Members.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
-		//title.setText("Members");
+		title.setText("Members");
+		addBtn.setVisible(true);
+		addBtn.setText("Add Member");
+		
 	}
 	public void plansB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Plans.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
-		//title.setText("Plans");
+		title.setText("Plans");
+		addBtn.setVisible(true);
+		addBtn.setText("Add Plan");
 	}
 	public void projectsB(ActionEvent e ) throws IOException {
 		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Projects.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
-		//title.setText("Projects");
+		title.setText("Projects");
+		addBtn.setVisible(true);
+		addBtn.setText("Add Project");
 	}	
 	public void logout(ActionEvent e) {
 		
