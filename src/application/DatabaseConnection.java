@@ -10,7 +10,7 @@ public class DatabaseConnection {
         // تأكد من إعداد URL, username, و password بشكل صحيح
         String url = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
-        String password = "admin";
+        String password = "123456";
         
         try {
             return DriverManager.getConnection(url, user, password);
