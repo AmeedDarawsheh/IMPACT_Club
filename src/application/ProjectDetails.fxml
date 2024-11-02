@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProjectDetailController">
+   <children>
+      <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="25.0" layoutY="150.0" text="Project Details" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="50.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/project-icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button fx:id="backmenu" layoutX="14.0" layoutY="724.0" mnemonicParsing="false" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="back to project menue " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/left-arrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <VBox layoutY="213.0" prefHeight="208.0" prefWidth="200.0" spacing="16.0">
+               <children>
+                  <Button fx:id="goals" mnemonicParsing="false" onAction="#about" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Goals" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                           <image>
+                              <Image url="@icons/target.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="financialplan" mnemonicParsing="false" onAction="#financialplan" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="financial Plan" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                           <image>
+                              <Image url="@icons/budget.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="leaderofproject" mnemonicParsing="false" onAction="#leaderofproject" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Leader of Project" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-17.0">
+                           <image>
+                              <Image url="@icons/leader.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="memberinproject" mnemonicParsing="false" onAction="#memberinproject" prefHeight="52.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Member in Project" textAlignment="RIGHT" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <graphic>
+                      <ImageView fitHeight="34.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/team.png" />
+                     </image>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </ImageView>
+                  </graphic>
+                  </Button>
+                  
+               </children>
+            </VBox>
+         </children></Pane>
+      <Pane layoutX="200.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
+         <children>
+            <Label fx:id="title" layoutX="38.0" layoutY="8.0" text="OverView" textFill="#121826">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/plus%20(2).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="a" layoutX="200.0" layoutY="79.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
+         <children>
+            <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

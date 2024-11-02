@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AboutController">
+    <children>
+        <!-- Goals Button -->
+        <Button fx:id="goalsButton" layoutX="93.0" layoutY="171.0" mnemonicParsing="false" onAction="#initialize" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #3c6e71; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-border-radius: 15; -fx-background-radius: 15;" text="Goals" />
+
+        <!-- Description Button -->
+        <Button fx:id="descriptionButton" layoutX="93.0" layoutY="311.0" mnemonicParsing="false" onAction="#initialize" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #3c6e71; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-border-radius: 15; -fx-background-radius: 15;" text="Description" />
+
+        <!-- Status Button -->
+        <Button fx:id="statusButton" layoutX="93.0" layoutY="449.0" mnemonicParsing="false" onAction="#initialize" prefHeight="54.0" prefWidth="200.0" style="-fx-background-color: #3c6e71; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-border-radius: 15; -fx-background-radius: 15;" text="Status" />
+
+        <!-- Edit Button -->
+        <Button fx:id="editButton" layoutX="800.0" layoutY="600.0" mnemonicParsing="false" onAction="#initialize" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: #ed6a5a; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-border-radius: 15; -fx-background-radius: 15;" text="Edit" />
+
+        <!-- Save Button -->
+        <Button fx:id="saveButton" layoutX="1000.0" layoutY="600.0" mnemonicParsing="false" onAction="#initialize" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: #ed6a5a; -fx-text-fill: #ffffff; -fx-font-size: 16px; -fx-border-radius: 15; -fx-background-radius: 15;" text="Save" />
+
+        <!-- Objectives Label -->
+        <Label fx:id="objectivesLabel" layoutX="319.0" layoutY="158.0" prefHeight="70.0" prefWidth="745.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <!-- Description Label -->
+        <Label fx:id="descriptionLabel" layoutX="316.0" layoutY="304.0" prefHeight="70.0" prefWidth="746.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+
+        <!-- Radio Buttons for Status -->
+        <RadioButton fx:id="completedRadioButton" layoutX="388.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" text="Completed">
+            <toggleGroup>
+                <ToggleGroup fx:id="statusGroup" />
+            </toggleGroup>
+         <font>
+            <Font size="18.0" />
+         </font>
+        </RadioButton>
+        <RadioButton fx:id="inProgressRadioButton" layoutX="569.0" layoutY="461.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="In Progress" toggleGroup="$statusGroup">
+         <font>
+            <Font size="18.0" />
+         </font></RadioButton>
+    </children>
+</AnchorPane>

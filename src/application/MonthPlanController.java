@@ -23,7 +23,7 @@ public class MonthPlanController {
 
     private int month;
     private int yearlyplanId;
-    private Connection databaseConnection; // 
+    private Connection databaseConnection; 
     @FXML
     private Label monthLabel; 
 

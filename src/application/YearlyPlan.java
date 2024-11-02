@@ -1,6 +1,6 @@
 package application;
 
-public class YearlyPlan extends FanancialPlan {
+public class YearlyPlan  {
 	
 	private int numberOfProjec;
 	private int numberOfReward;
