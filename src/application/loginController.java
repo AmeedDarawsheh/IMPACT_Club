@@ -1,6 +1,8 @@
 package application;
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -16,6 +19,7 @@ public class loginController {
 	public Stage stage ;
 	private Scene scene;
 	public Parent root;
+	
 	@FXML
 	TextField emailTextField;
 	@FXML
@@ -27,7 +31,7 @@ public class loginController {
 		@SuppressWarnings("unused")
 		String password = passwordField.getText();	
 		
-		if(true
+		if(isLeader(username,password)
 				/*username.equals("Admin")&&password.equals("Admin")*/
 			) {
 			root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -39,7 +43,38 @@ public class loginController {
 			stage.centerOnScreen();
 			stage.setResizable(false);
 		}	
+		else {showAlert("Login Failed", "Invalid username or password. Please try again.");}
 	}
+	private boolean isLeader(String username, String password) {
+		 DatabaseConnection databaseConnection = new DatabaseConnection();
+        String query = "SELECT p.ssn FROM \"IMPACT Club\".person p " +
+                       "JOIN \"IMPACT Club\".leader l ON p.ssn = l.ssn " +
+                       "WHERE p.user_name = ? AND p.password = ?";
+
+        try (Connection conn = databaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return true; // User is a leader
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return false; // User is not found or not a leader
+    }
+	private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 	public void signUp(ActionEvent e) {
 		System.out.println("sign up");		
 	
