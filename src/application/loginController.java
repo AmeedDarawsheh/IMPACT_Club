@@ -89,4 +89,16 @@ public class loginController {
 		stage.centerOnScreen();
 		stage.setResizable(false);
 	}
+	 public void openForgetPassword() {
+	        try {
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource("forget.fxml"));
+	            Parent root = loader.load();
+	            Stage stage = new Stage();
+	            stage.setTitle("Forget Password");
+	            stage.setScene(new Scene(root));
+	            stage.show();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
 }
