@@ -62,7 +62,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="223.0" layoutY="294.0" mnemonicParsing="false" style="-fx-background-color: white;" text="forget you'r password ?" />
+            <Button layoutX="223.0" layoutY="294.0" mnemonicParsing="false" onAction="#openForgetPassword" style="-fx-background-color: white;" text="forget you'r password ?" />
             <PasswordField fx:id="passwordField" layoutX="87.0" layoutY="257.0" prefHeight="25.0" prefWidth="277.0" style="-fx-border-color: #212936;" />
             <CheckBox layoutX="91.0" layoutY="298.0" mnemonicParsing="false" style="-fx-background-color: white;" text="Remmber me" textAlignment="JUSTIFY" />
          </children>
