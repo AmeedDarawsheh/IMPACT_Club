@@ -1,5 +1,8 @@
 package application;
 import java.sql.Date;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
 public class Session {
 
 	private  int number;
@@ -23,5 +26,6 @@ public class Session {
 	}
 	public void setDate(Date date) {
 		this.date = date;
-	}		
+	}
+	
 }

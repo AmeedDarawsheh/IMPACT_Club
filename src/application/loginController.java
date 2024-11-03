@@ -79,4 +79,14 @@ public class loginController {
 		System.out.println("sign up");		
 	
 	}
+	public void contactus(ActionEvent e) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("contactus.fxml"));
+		stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+		scene = new Scene(root);
+		stage.setScene(scene);
+		stage.show();
+		stage.setTitle("Contact us");
+		stage.centerOnScreen();
+		stage.setResizable(false);
+	}
 }

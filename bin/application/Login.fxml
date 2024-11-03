@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
+<AnchorPane prefHeight="460.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
    <children>
       <Pane layoutX="449.0" prefHeight="460.0" prefWidth="332.0" style="-fx-background-color: #212936;">
          <children>
@@ -33,7 +33,7 @@
                   <Font name="Cambria Bold" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="245.0" layoutY="421.0" mnemonicParsing="false" style="-fx-background-color: #212936;" text="Contact us" textFill="WHITE" />
+            <Button layoutX="245.0" layoutY="421.0" mnemonicParsing="false" onAction="#contactus" style="-fx-background-color: #212936;" text="Contact us" textFill="WHITE" />
          </children>
       </Pane>
       <Pane prefHeight="460.0" prefWidth="449.0" style="-fx-background-color: white;">
