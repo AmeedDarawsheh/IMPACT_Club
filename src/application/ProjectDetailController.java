@@ -81,6 +81,7 @@ public class ProjectDetailController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("LeaderofProject.fxml"));
 	    Parent fxml = loader.load();
 	    leaderofprojectController leaderofprojectController = loader.getController();
+	  
 	    leaderofprojectController.setProjectId(projectId);
 
 		stackPane.getChildren().removeAll();
