@@ -1,0 +1,16 @@
+/* dark-theme.css */
+
+/* Apply black background to all common Pane types */
+.pane, .vbox, .hbox, .border-pane, .stack-pane, .grid-pane, .flow-pane, .anchor-pane {
+    -fx-background-color: #000000;
+}
+
+/* Optional: Customize text and button colors for a dark theme */
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.button {
+    -fx-background-color: #333333;
+    -fx-text-fill: #FFFFFF;
+}

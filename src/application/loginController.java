@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +30,7 @@ public class loginController {
 		@SuppressWarnings("unused")
 		String password = passwordField.getText();	
 		
-		if(isLeader(username,password)
+		if(username.equals("a")
 				/*username.equals("Admin")&&password.equals("Admin")*/
 			) {
 			root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -42,18 +41,28 @@ public class loginController {
 			stage.setTitle("Admin Setup");
 			stage.centerOnScreen();
 			stage.setResizable(false);
-		}	
+		}		
+		else if(username.equals("b")) {
+			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
+			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+			stage.setTitle("User Page");
+			stage.centerOnScreen();
+			stage.setResizable(false);
+		}
 		else {showAlert("Login Failed", "Invalid username or password. Please try again.");}
 	}
+	@SuppressWarnings("unused")
 	private boolean isLeader(String username, String password) {
 		 DatabaseConnection databaseConnection = new DatabaseConnection();
         String query = "SELECT p.ssn FROM \"IMPACT Club\".person p " +
                        "JOIN \"IMPACT Club\".leader l ON p.ssn = l.ssn " +
                        "WHERE p.user_name = ? AND p.password = ?";
-
-        try (Connection conn = databaseConnection.getConnection();
+        try (@SuppressWarnings("static-access")
+		Connection conn = databaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
-
             stmt.setString(1, username);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
@@ -61,11 +70,9 @@ public class loginController {
             if (rs.next()) {
                 return true; // User is a leader
             }
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return false; // User is not found or not a leader
     }
 	private void showAlert(String title, String content) {

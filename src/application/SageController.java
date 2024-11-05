@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -26,8 +27,7 @@ public class SageController implements Initializable {
 	@FXML
 	Label title;
 	@FXML
-	Button addBtn;
-	
+	Button addBtn;	
 	@Override
 	public void initialize(URL locatian,ResourceBundle resources) {	
 		try {
@@ -35,7 +35,6 @@ public class SageController implements Initializable {
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);
 			title.setText("OverView");
-
 		}catch(IOException ex ) {
 		//	Logger.getLogger(SageController.class.getName()).log(Level.SEVERE,null, ex);
 		}	
@@ -54,8 +53,7 @@ public class SageController implements Initializable {
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Members");
 		addBtn.setVisible(true);
-		addBtn.setText("Add Member");
-		
+		addBtn.setText("Add Member");		
 	}
 	public void plansB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Plans.fxml"));
@@ -65,8 +63,7 @@ public class SageController implements Initializable {
 		addBtn.setVisible(true);
 		addBtn.setText("Add Plan");
 	}
-	public void projectsB(ActionEvent e ) throws IOException {
-		
+	public void projectsB(ActionEvent e ) throws IOException {	
 		Parent fxml = FXMLLoader.load(getClass().getResource("Projects.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
@@ -74,17 +71,19 @@ public class SageController implements Initializable {
 		addBtn.setVisible(true);
 		addBtn.setText("Add Project");
 	}	
-	public void logout(ActionEvent e) {
-		
+	public void logout(ActionEvent e) throws IOException {	
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Logout");
 		alert.setHeaderText("You're about to logout!");
-		alert.setContentText("Do you want to save before exiting?: ");
-		
+		alert.setContentText("Do you want to save before exiting?: ");	
 		if(alert.showAndWait().get() == ButtonType.OK){
 			stage = (Stage) scenePane.getScene().getWindow();
 			System.out.println("You successfully logged out!");
-			stage.close();
+			stage.close();			
+			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Scene scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();	
 		}				
 	}	
 }
