@@ -4,10 +4,16 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 public class UserPageSettingsController implements Initializable{	
 	@FXML
 	Button  savePass , saveAcc , saveApp;
@@ -19,7 +25,14 @@ public class UserPageSettingsController implements Initializable{
 	,uField
 	,SAField
 	,CAField
-	,Currentpass,newPass,cNewPass;	
+	,Currentpass,newPass,cNewPass;
+	
+	@FXML
+	RadioButton dark,light,fullscreen,miniscreen;
+	
+	ToggleGroup toggleGroup1 = new ToggleGroup();
+	ToggleGroup toggleGroup2 = new ToggleGroup();
+	
 	@FXML
 	public void savePassword(ActionEvent e) {
 		String Currentpasss = Currentpass.getText();
@@ -73,12 +86,36 @@ public class UserPageSettingsController implements Initializable{
 	@FXML
 	public void saveApp(ActionEvent e) {
 		System.out.println("saveApp");
+		Scene scene = miniscreen.getScene();
+		Stage stage = (Stage) scene.getWindow();
 		
+		if(dark.isSelected()) {
+			scene.getStylesheets().add("/style.css");
+		}
+		else {
+			scene.getStylesheets().remove("/style.css");
+		}		
+		if(fullscreen.isSelected()) {
+			System.out.println("full");
+			//scene.setMaximized(true);
+			stage.setFullScreen(true);
+			//stage.setMaximized(true);
+		}
+		else {
+			System.out.println("mini");
+			//stage.setMaximized(false);
+			stage.setFullScreen(false);
+		}	
 		// not ready !!
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		
+		dark.setToggleGroup(toggleGroup1);
+		light.setToggleGroup(toggleGroup1);
+		fullscreen.setToggleGroup(toggleGroup2);
+		miniscreen.setToggleGroup(toggleGroup2);
 		
 		fName.setText("//get Values By SQl Commands");
 		mName.setText("//get Values By SQl Commands");
