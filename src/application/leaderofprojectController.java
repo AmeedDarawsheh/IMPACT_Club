@@ -27,20 +27,20 @@ public class leaderofprojectController {
     private TableColumn<ProjectLeader, String> feedbackColumn;
 
     private ObservableList<ProjectLeader> leaderData = FXCollections.observableArrayList();
-    private int projectId; 
+    private int projectId; // Project ID set by another method or selected by the user
 
-    
+    // Method to initialize columns and set up TableView
     public void initialize() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         leaderNameColumn.setCellValueFactory(new PropertyValueFactory<>("leaderName"));
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
         feedbackColumn.setCellValueFactory(new PropertyValueFactory<>("feedback"));
 
-        
+        // Call this method when the projectId is set or changed
         loadProjectLeaders();
     }
 
-    
+    // Method to load project leaders data
     private void loadProjectLeaders() {
         leaderData.clear(); // Clear any existing data
         String query = "SELECT l.leaderid AS idleader, " +
@@ -61,26 +61,26 @@ public class leaderofprojectController {
                 String role = rs.getString("role");
                 String feedback = rs.getString("projectfeedback");
 
-               
+                // Add new ProjectLeader object to the observable list
                 leaderData.add(new ProjectLeader(id, leaderName, role, feedback));
             }
-            tableView.setItems(leaderData); 
+            tableView.setItems(leaderData); // Set data to TableView
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
+    // Method to set the project ID (e.g., when a project is chosen by the user)
     public void setProjectId(int projectId) {
         this.projectId = projectId;
-        loadProjectLeaders(); 
+        loadProjectLeaders(); // Load data for the chosen project
     }
     @FXML
     private void onGiveFeedbackClick() {
-        
-        int loggedInLeaderId = loginController.getLoggedInLeaderId(); 
+        // Assuming you have a way to get the logged-in leader ID
+        int loggedInLeaderId = loginController.getLoggedInLeaderId(); // Replace with your logic to retrieve the logged-in leader's ID
         System.out.print(loggedInLeaderId);
-       
+        // Get the selected leader from the table view
         ProjectLeader selectedLeader = tableView.getSelectionModel().getSelectedItem();
         
         if (selectedLeader == null) {
@@ -88,13 +88,13 @@ public class leaderofprojectController {
             return;
         }
 
-        
+        // Check if the selected leader's ID matches the logged-in leader's ID
         if (selectedLeader.getId() != loggedInLeaderId) {
             showAlert("Access Denied", "You can only edit your own feedback.");
             return;
         }
 
-        
+        // Show input dialog for feedback
         TextInputDialog feedbackDialog = new TextInputDialog(selectedLeader.getFeedback());
         feedbackDialog.setTitle("Edit Feedback");
         feedbackDialog.setHeaderText("Edit your feedback for this project:");
@@ -102,10 +102,10 @@ public class leaderofprojectController {
 
         Optional<String> result = feedbackDialog.showAndWait();
         result.ifPresent(feedback -> {
-            
+            // Update feedback in the database
             if (updateFeedbackInDatabase(loggedInLeaderId, feedback)) {
-                selectedLeader.setFeedback(feedback);
-                tableView.refresh(); 
+                selectedLeader.setFeedback(feedback); // Update local data
+                tableView.refresh(); // Refresh table to show updated feedback
                 showAlert("Success", "Feedback updated successfully.");
             } else {
                 showAlert("Error", "Failed to update feedback. Please try again.");
@@ -113,7 +113,7 @@ public class leaderofprojectController {
         });
     }
 
-   
+    // Method to show an alert dialog
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -121,7 +121,7 @@ public class leaderofprojectController {
         alert.showAndWait();
     }
 
-    
+    // Method to update feedback in the database
     private boolean updateFeedbackInDatabase(int leaderId, String feedback) {
         String query = "UPDATE \"IMPACT Club\".projectleader SET projectfeedback = ? WHERE leaderid = ?;";
         try (Connection conn = new DatabaseConnection().getConnection();
@@ -137,24 +137,24 @@ public class leaderofprojectController {
     }
     @FXML
     private void onEditRoleClick() {
-        
-        int loggedInLeaderId = loginController.getLoggedInLeaderId(); 
+        // Assuming you have a way to get the logged-in leader ID
+        int loggedInLeaderId = loginController.getLoggedInLeaderId(); // Replace with your logic to retrieve the logged-in leader's ID
         System.out.print(loggedInLeaderId);
-       
+        // Get the selected leader from the table view
         ProjectLeader selectedLeader = tableView.getSelectionModel().getSelectedItem();
         
         if (selectedLeader == null) {
-            showAlert("No Leader Selected", "Please select a leader to edit role .");
+            showAlert("No Leader Selected", "Please select a leader to give feedback.");
             return;
         }
 
-        
+        // Check if the selected leader's ID matches the logged-in leader's ID
         if (selectedLeader.getId() != loggedInLeaderId) {
             showAlert("Access Denied", "You can only edit your own role.");
             return;
         }
 
-       
+        // Show input dialog for feedback
         TextInputDialog RoleDialog = new TextInputDialog(selectedLeader.getRole());
         RoleDialog.setTitle("Edit Role");
         RoleDialog.setHeaderText("Edit your Role for this project:");
@@ -162,10 +162,10 @@ public class leaderofprojectController {
 
         Optional<String> result = RoleDialog.showAndWait();
         result.ifPresent(Role -> {
-           
+            // Update feedback in the database
             if (updateRoleInDatabase(loggedInLeaderId, Role)) {
-                selectedLeader.setRole(Role);
-                tableView.refresh(); 
+                selectedLeader.setRole(Role); // Update local data
+                tableView.refresh(); // Refresh table to show updated feedback
                 showAlert("Success", "Role updated successfully.");
             } else {
                 showAlert("Error", "Failed to update Role. Please try again.");
@@ -174,7 +174,7 @@ public class leaderofprojectController {
     }
 
     
-    
+    // Method to update feedback in the database
     private boolean updateRoleInDatabase(int leaderId, String role) {
         String query = "UPDATE \"IMPACT Club\".projectleader SET role= ? WHERE leaderid = ?;";
         try (Connection conn = new DatabaseConnection().getConnection();

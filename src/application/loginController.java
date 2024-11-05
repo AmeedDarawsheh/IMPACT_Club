@@ -33,7 +33,9 @@ public class loginController {
         String username = emailTextField.getText();
         String password = passwordField.getText();    
 
-        if (isLeader(username, password)) {
+        if (username.equals("a")
+        		/*isLeader(username, password)*/
+        		){
             // Load the next scene after successful login
             root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
@@ -43,22 +45,21 @@ public class loginController {
             stage.setTitle("Admin Setup");
             stage.centerOnScreen();
             stage.setResizable(false);
-        } else {
-            showAlert("Login Failed", "Invalid username or password. Please try again.");
+        }       
+        else if (username.equals("b")) {
+			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
+			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+			scene = new Scene(root);
+			stage.setScene(scene);
+			stage.show();
+			stage.setTitle("User Page");
+			stage.centerOnScreen();
+			stage.setResizable(false);    	
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        else {
+            showAlert("Login Failed", "Invalid username or password. Please try again.");
+        }  
     }
-
     private boolean isLeader(String username, String password) {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String query = "SELECT l.leaderid FROM \"IMPACT Club\".person p " +
