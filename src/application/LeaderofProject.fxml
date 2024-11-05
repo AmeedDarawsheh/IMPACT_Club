@@ -9,23 +9,19 @@
 
 <AnchorPane prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: linear-gradient(to bottom, #F0FAFC, #FFFFFF);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.leaderofprojectController">
    <children>
-      <Label layoutX="14.0" layoutY="4.0" prefHeight="102.0" prefWidth="678.0" textFill="#003366">
+      <Label layoutX="206.0" prefHeight="66.0" prefWidth="533.0" textFill="#003366">
          <font>
             <Font name="System Bold" size="45.0" />
          </font>
       </Label>
-      <Label layoutX="611.0" layoutY="515.0" prefHeight="47.0" prefWidth="246.0" style="-fx-background-color: #E0F7FA;" textFill="#003366">
-         <font>
-            <Font name="System Bold" size="27.0" />
-         </font>
-      </Label>
-      <Button layoutX="875.0" layoutY="240.0" mnemonicParsing="false" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2); -fx-background-color: #E0F7FA; -fx-text-fill: #003366; fx-padding: 5px10px; -fx-background-radius: 15; -fx-font-size: 12px;" />
-      <Button layoutX="1008.0" layoutY="272.0" mnemonicParsing="false" style="-fx-background-color: #E0F7FA; -fx-text-fill: #003366; -fx-background-radius: 15; -fx-font-size: 12px; -fx-padding: 5px10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" />
-      <Button layoutX="448.0" layoutY="594.0" mnemonicParsing="false" style="-fx-border-color: transparent; -fx-background-color: #E0F7FA; -fx-text-fill: #003366; -fx-background-radius: 15; -fx-padding: 5px 10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" />
-      <TableView layoutX="62.0" layoutY="14.0" prefHeight="487.0" prefWidth="658.0">
+      <Button layoutX="525.0" layoutY="601.0" mnemonicParsing="false" onAction="#onEditRoleClick" prefHeight="39.0" prefWidth="143.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2); -fx-background-color: #E0F7FA; -fx-text-fill: #003366; fx-padding: 5px10px; -fx-background-radius: 15; -fx-font-size: 12px;" text="Edit you role " />
+      <Button layoutX="347.0" layoutY="601.0" mnemonicParsing="false" onAction="#onGiveFeedbackClick" prefHeight="39.0" prefWidth="143.0" style="-fx-border-color: transparent; -fx-background-color: #E0F7FA; -fx-text-fill: #003366; -fx-background-radius: 15; -fx-padding: 5px 10px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 2);" text="Give a Feedback" />
+      <TableView fx:id="tableView" layoutX="29.0" layoutY="65.0" prefHeight="502.0" prefWidth="1112.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="idColumn" prefWidth="41.60000991821289" text="ID" />
+            <TableColumn fx:id="leaderNameColumn" minWidth="0.0" prefWidth="209.59999084472656" text="Leader Name" />
+          <TableColumn fx:id="roleColumn" prefWidth="123.199951171875" text="Role in project" />
+            <TableColumn fx:id="feedbackColumn" prefWidth="736.8001098632812" style="-fxbackground: #003366;" text="Feedback" />
         </columns>
       </TableView>
    </children>
