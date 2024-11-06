@@ -185,7 +185,7 @@ try (Connection conn = data.getConnection();
      stmt.setString(1, person.getRoleInProject());
      stmt.setString(2, person.getFeedback());
      stmt.setInt(3, person.getProjectInvolvementLevel());
-     stmt.setString(4, person.getMemberId()); // Use ssn here as input to retrieve memberid
+     stmt.setString(4, person.getMemberId()); 
      stmt.setInt(5, projectId); // Project ID as specified
 
      stmt.executeUpdate();
