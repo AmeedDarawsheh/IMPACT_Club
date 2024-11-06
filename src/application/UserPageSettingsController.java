@@ -1,4 +1,5 @@
 package application;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,6 +14,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 public class UserPageSettingsController implements Initializable{	
 	@FXML
@@ -26,6 +31,10 @@ public class UserPageSettingsController implements Initializable{
 	,SAField
 	,CAField
 	,Currentpass,newPass,cNewPass;
+	
+	FileChooser fileChooser ;
+	@FXML 
+	ImageView image1;
 	
 	@FXML
 	RadioButton dark,light,fullscreen,miniscreen;
@@ -108,6 +117,23 @@ public class UserPageSettingsController implements Initializable{
 		}	
 		// not ready !!
 	}
+    @FXML
+    void selectPhoto(ActionEvent e) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(
+            new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
+        );
+        Stage stage = (Stage) image1.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            Image img = new Image(selectedFile.toURI().toString());
+            // store img to database to add it in another place 
+            image1.setImage(img);
+            Circle clip = new Circle(image1.getFitWidth() / 2, image1.getFitHeight() / 2,
+                    Math.min(image1.getFitWidth(), image1.getFitHeight()) / 2);
+            image1.setClip(clip);
+        }
+    }	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -116,6 +142,8 @@ public class UserPageSettingsController implements Initializable{
 		light.setToggleGroup(toggleGroup1);
 		fullscreen.setToggleGroup(toggleGroup2);
 		miniscreen.setToggleGroup(toggleGroup2);
+		
+		// image1.setImage();  member image 
 		
 		fName.setText("//get Values By SQl Commands");
 		mName.setText("//get Values By SQl Commands");
