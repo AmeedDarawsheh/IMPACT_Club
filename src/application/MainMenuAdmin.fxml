@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SageController">
+<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SageController">
    <children>
       <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936;">
          <children>
@@ -109,7 +109,7 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE" visible="false">
+            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE" visible="false">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

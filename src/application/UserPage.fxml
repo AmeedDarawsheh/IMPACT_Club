@@ -13,13 +13,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageConreoller">
+<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageConreoller">
    <children>
       <Pane prefHeight="230.0" prefWidth="1366.0" style="-fx-background-color: #212936; -fx-background-radius: 00 00 90 90;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="31.0" layoutY="39.0" style="-fx-background-color: #212936;">
+            <Pane layoutX="24.0" layoutY="35.0" prefHeight="170.0" prefWidth="170.0" style="-fx-background-color: #212936; -fx-background-radius: 20;">
                <children>
-                  <ImageView fitHeight="187.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/leader.png" />
                      </image>
@@ -106,23 +106,23 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="username" layoutX="233.0" layoutY="63.0" prefHeight="30.0" prefWidth="131.0" text="Member Name" textFill="WHITE">
+            <Label fx:id="name" layoutX="233.0" layoutY="63.0" prefHeight="30.0" prefWidth="206.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Line endX="40.0" layoutX="349.0" layoutY="93.0" startX="-115.0" stroke="#f3f4f6" />
-            <Label fx:id="email" layoutX="233.0" layoutY="100.0" text="omdeh4@gmail.com" textFill="WHITE">
+            <Line endX="90.0" endY="7.62939453125E-6" layoutX="349.0" layoutY="93.0" startX="-115.0" stroke="#f3f4f6" />
+            <Label fx:id="email" layoutX="233.0" layoutY="100.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="address" layoutX="233.0" layoutY="120.0" text="Palestine ,Nablus" textFill="WHITE">
+            <Label fx:id="address" layoutX="233.0" layoutY="120.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="dateJoin" layoutX="233.0" layoutY="138.0" text="Member since 2024" textFill="WHITE">
+            <Label fx:id="dateJoin" layoutX="233.0" layoutY="138.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>

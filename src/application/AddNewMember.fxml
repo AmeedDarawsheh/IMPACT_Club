@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="448.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddNewMemberController">
+<AnchorPane prefHeight="530.0" prefWidth="448.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddNewMemberController">
    <children>
-      <Pane prefHeight="530.0" prefWidth="448.0" style="-fx-background-color: white;">
+      <Pane prefHeight="588.0" prefWidth="448.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="24.0" layoutY="14.0" text="Add New Member" textFill="#121826">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
             </Label>
-            <Button fx:id="add" layoutX="274.0" layoutY="450.0" mnemonicParsing="false" onAction="#addNewMember" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #0099ff;" text="Add Member" textFill="WHITE">
+            <Button fx:id="addButton" layoutX="287.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleAddMember" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #0099ff;" text="Add Member" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="cancel" layoutX="184.0" layoutY="450.0" mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: gray;" text="Cancel">
+            <Button fx:id="cancelButton" layoutX="197.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: gray;" text="Cancel">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="first" layoutX="24.0" layoutY="66.0" prefHeight="48.0" prefWidth="192.0" promptText="First Name" />
-            <TextField fx:id="ssn" layoutX="24.0" layoutY="130.0" prefHeight="48.0" prefWidth="400.0" promptText="Enter Your SSN" />
-            <TextField fx:id="email" layoutX="24.0" layoutY="194.0" prefHeight="48.0" prefWidth="400.0" promptText="Email" />
-            <TextField fx:id="ph" layoutX="24.0" layoutY="258.0" prefHeight="48.0" prefWidth="400.0" promptText="Phone Number" />
-            <TextField fx:id="address" layoutX="24.0" layoutY="322.0" prefHeight="48.0" prefWidth="400.0" promptText="Enter Address Ex : City,Setreet ,HomeNumber" />
-            <TextField fx:id="last" layoutX="232.0" layoutY="66.0" prefHeight="48.0" prefWidth="192.0" promptText="Last Name" />
-            <ChoiceBox id="gender" fx:id="gender" layoutX="24.0" layoutY="389.0" prefHeight="25.0" prefWidth="198.0" style="-fx-background-color: white;" />
+            <TextField fx:id="firstNameField" layoutX="24.0" layoutY="66.0" prefHeight="48.0" prefWidth="125.0" promptText="First Name" />
+            <TextField fx:id="ssnField" layoutX="24.0" layoutY="130.0" prefHeight="48.0" prefWidth="400.0" promptText="Enter Your SSN" />
+            <TextField fx:id="emailField" layoutX="24.0" layoutY="194.0" prefHeight="48.0" prefWidth="400.0" promptText="Email" />
+            <TextField fx:id="phoneField" layoutX="24.0" layoutY="258.0" prefHeight="48.0" prefWidth="400.0" promptText="Phone Number" />
+            <TextField fx:id="streetField" layoutX="22.0" layoutY="322.0" prefHeight="48.0" prefWidth="184.0" promptText="Enter address :  Street" />
+            <TextField fx:id="lastNameField" layoutX="299.0" layoutY="66.0" prefHeight="48.0" prefWidth="125.0" promptText="Last Name" />
+            <TextField fx:id="middleNameField" layoutX="159.0" layoutY="66.0" prefHeight="48.0" prefWidth="125.0" promptText="Middle Name" />
+            <DatePicker fx:id="birthDatePicker" layoutX="24.0" layoutY="381.0" prefHeight="34.0" prefWidth="184.0" promptText="Birth of Date" />
+            <DatePicker fx:id="startDatePicker" layoutX="235.0" layoutY="381.0" prefHeight="34.0" prefWidth="190.0" promptText="Start Date" />
+            <RadioButton fx:id="maleRadio" layoutX="165.0" layoutY="448.0" mnemonicParsing="false" text="Male" />
+            <RadioButton fx:id="femaleRadio" layoutX="256.0" layoutY="448.0" mnemonicParsing="false" text="Female" />
+            <Label layoutX="87.0" layoutY="446.0" prefHeight="18.0" prefWidth="59.0" text="Gender">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="cityField" layoutX="235.0" layoutY="322.0" prefHeight="48.0" prefWidth="190.0" promptText="Enter City" />
          </children>
       </Pane>
    </children>

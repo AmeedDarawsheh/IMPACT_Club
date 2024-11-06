@@ -27,14 +27,15 @@ public class loginController {
     PasswordField passwordField;
 
     // Field to store the leader ID
-    private static int loggedInLeaderId = -1;
+    private static int loggedInLeaderId = -1,loggedInMemberId = -1;
+    
 
     public void signIn(ActionEvent e) throws IOException {
         String username = emailTextField.getText();
         String password = passwordField.getText();    
 
-        if (username.equals("a")
-        		/*isLeader(username, password)*/
+        if (
+        		isLeader(username, password)
         		){
             // Load the next scene after successful login
             root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -46,7 +47,9 @@ public class loginController {
             stage.centerOnScreen();
             stage.setResizable(false);
         }       
-        else if (username.equals("b")) {
+        else if (
+        		isMember(username,password)
+        		) {
 			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
 			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
 			scene = new Scene(root);
@@ -90,7 +93,36 @@ public class loginController {
     public static int getLoggedInLeaderId() {
         return loggedInLeaderId;
     }
+    private boolean isMember(String username, String password) {
+        DatabaseConnection databaseConnection = new DatabaseConnection();
+        String query = "SELECT m.memberid FROM \"IMPACT Club\".person p " +
+                       "JOIN \"IMPACT Club\".member m ON p.ssn = m.ssn " +
+                       "WHERE p.user_name = ? AND p.password = ?";
 
+        try (Connection conn = databaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                // Store the leaderId for later use
+                loggedInMemberId = rs.getInt("memberid");
+                return true; // User is a leader
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return false; // User is not found or not a leader
+    }
+
+    // Getter method for the logged-in leader ID
+    public static int getLoggedInMemberId() {
+        return loggedInMemberId;
+    }
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

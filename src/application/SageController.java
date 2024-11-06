@@ -27,7 +27,8 @@ public class SageController implements Initializable {
 	@FXML
 	Label title;
 	@FXML
-	Button addBtn;	
+	Button addBtn;
+	private String currentPage;
 	@Override
 	public void initialize(URL locatian,ResourceBundle resources) {	
 		try {
@@ -53,7 +54,9 @@ public class SageController implements Initializable {
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Members");
 		addBtn.setVisible(true);
-		addBtn.setText("Add Member");		
+		addBtn.setText("Add Member");
+		currentPage = "Members";
+		
 	}
 	public void plansB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Plans.fxml"));
@@ -70,6 +73,7 @@ public class SageController implements Initializable {
 		title.setText("Projects");
 		addBtn.setVisible(true);
 		addBtn.setText("Add Project");
+		 currentPage = "Projects"; 
 	}	
 	public void logout(ActionEvent e) throws IOException {	
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -85,5 +89,37 @@ public class SageController implements Initializable {
 			stage.setScene(scene);
 			stage.show();	
 		}				
-	}	
+	}
+	  @FXML
+	    public void handleAddButton(ActionEvent e) throws IOException {
+	        switch (currentPage) {
+	            case "Members":
+	                openAddMemberPage();
+	                break;
+	            case "Projects":
+	              //  openAddProjectPage();
+	                break;
+	            
+	            
+	            default:
+	                break;
+	        }
+	    }
+
+	    private void openAddMemberPage() throws IOException {
+	        Parent fxml = FXMLLoader.load(getClass().getResource("AddNewMember.fxml"));
+	        Stage addMemberStage = new Stage();
+	        addMemberStage.setTitle("Add Member");
+	        addMemberStage.setScene(new Scene(fxml));
+	        addMemberStage.show();
+	    }
+
+	   /* private void openAddProjectPage() throws IOException {
+	        Parent fxml = FXMLLoader.load(getClass().getResource("AddProject.fxml"));
+	        Stage addProjectStage = new Stage();
+	        addProjectStage.setTitle("Add Project");
+	        addProjectStage.setScene(new Scene(fxml));
+	        addProjectStage.show();
+	    }*/
+
 }

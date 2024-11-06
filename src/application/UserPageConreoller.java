@@ -1,6 +1,10 @@
 package application;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,10 +29,11 @@ public class UserPageConreoller implements Initializable{
 	@FXML
 	AnchorPane scenePane;
 	 private boolean isDarkTheme = false; 
+	 static int points;
 	 @FXML
 	 Pane pane1,pane2; 
 	 @FXML
-	 Label username,dateJoin,email,address;
+	 Label name,dateJoin,email,address;
 	 @FXML
 	 private ToggleButton  themeToggleButton;	
 	 @FXML
@@ -56,14 +61,41 @@ public class UserPageConreoller implements Initializable{
 			Parent fxml = FXMLLoader.load(getClass().getResource("UserPageHome.fxml"));
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);
-			username.setText("Member Name");// SQL get memberName
-			dateJoin.setText("Member since "+1425+"");// SQL get MemberJoinDate
-			email.setText("omdeh4@gmail.com");// SQL get member Email
-			address.setText("Palestine"+","+"Nablus");// SQL get member address
 			
+			loadMemberDetails();
 		}catch(IOException ex ) {
 		//	Logger.getLogger(SageController.class.getName()).log(Level.SEVERE,null, ex);
 		}	
+	}
+	private void loadMemberDetails() {
+    DatabaseConnection database = new DatabaseConnection();
+    try (Connection conn = database.getConnection()) {
+        String query = "SELECT p.user_name AS email, p.first_name || ' ' || p.middle_name || ' ' || p.last_name AS name, " +
+                       "p.city, p.street, m.points, p.start_date " +
+                       "FROM \"IMPACT Club\".person p " +
+                       "JOIN \"IMPACT Club\".member m ON p.ssn = m.ssn " +
+                       "WHERE m.memberid = ?";
+        PreparedStatement pstmt = conn.prepareStatement(query);
+        pstmt.setInt(1, loginController.getLoggedInMemberId());
+        ResultSet rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            email.setText(rs.getString("email"));
+            name.setText(rs.getString("name"));
+            String street = rs.getString("street");
+            String city = rs.getString("city");
+            address.setText( street +  "street,"  + city);
+            points=rs.getInt("points");
+            System.out.print(points);
+            
+          dateJoin.setText("Member since: "+rs.getString("start_date"));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+	static int getpoints() {
+		return points;
 	}
 	 public void Home(ActionEvent e) throws IOException {	 
 		 	Parent fxml = FXMLLoader.load(getClass().getResource("UserPageHome.fxml"));
