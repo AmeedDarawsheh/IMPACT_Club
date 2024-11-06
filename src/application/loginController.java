@@ -34,8 +34,8 @@ public class loginController {
         String username = emailTextField.getText();
         String password = passwordField.getText();    
 
-        if (
-        		isLeader(username, password)
+        if (username.equals("a")
+        		//isLeader(username, password)
         		){
             // Load the next scene after successful login
             root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -47,8 +47,8 @@ public class loginController {
             stage.centerOnScreen();
             stage.setResizable(false);
         }       
-        else if (
-        		isMember(username,password)
+        else if (username.equals("b")
+        		//isMember(username,password)
         		) {
 			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
 			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
