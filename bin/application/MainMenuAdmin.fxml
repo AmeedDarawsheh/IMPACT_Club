@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SageController">
+<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SageController">
    <children>
-      <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936;">
+      <Pane prefHeight="768.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 00 50 50 00;">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
@@ -37,14 +37,14 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <VBox layoutY="200.0" prefHeight="208.0" prefWidth="200.0" spacing="16.0">
+            <VBox layoutY="200.0" spacing="16.0">
                <children>
-                  <Button fx:id="overviewB" mnemonicParsing="false" onAction="#overviewB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="OverView" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="overviewB" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#overviewB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="OverView" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/statistics%20(1).png" />
                            </image>
@@ -54,12 +54,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="membersB" mnemonicParsing="false" onAction="#membersB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Members" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="membersB" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#membersB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Members" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-10.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/vip-card.png" />
                            </image>
@@ -69,12 +69,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="projectsB" mnemonicParsing="false" onAction="#projectsB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Projects" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="projectsB" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#projectsB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Projects" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-17.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/project-management.png" />
                            </image>
@@ -84,12 +84,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="session" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="sessionB" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#sessionB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@icons/training.png" />
                            </image>
@@ -99,14 +99,29 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="plansB" mnemonicParsing="false" onAction="#plansB" prefHeight="104.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="plansB" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#plansB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                      <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="7.0">
                            <image>
                               <Image url="@icons/planning.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="settingsBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#settingsBtn" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Settings" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/settings.png" />
                            </image>
                            <effect>
                               <Glow />
@@ -117,14 +132,14 @@
                </children>
             </VBox>
          </children></Pane>
-      <Pane layoutX="200.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
+      <Pane layoutX="200.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white; -fx-background-radius: 50;">
          <children>
-            <Label fx:id="title" layoutX="38.0" layoutY="8.0" text="OverView" textFill="#121826">
+            <Label fx:id="title" layoutX="69.0" layoutY="8.0" text="OverView" textFill="#121826">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Button fx:id="addBtn" layoutX="939.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="40.0" prefWidth="185.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE" visible="false">
+            <Button fx:id="addBtn" layoutX="681.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="40.0" prefWidth="471.0" style="-fx-background-color: #121826; -fx-background-radius: 100 100 100 100;" text="Add Member" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

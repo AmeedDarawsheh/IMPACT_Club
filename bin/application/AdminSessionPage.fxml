@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SessionController">
+   <children>
+      <Pane layoutX="852.0" prefHeight="690.0" prefWidth="308.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+         <children>
+            <ToggleButton fx:id="switchBtn" layoutX="57.0" layoutY="578.0" mnemonicParsing="false" onAction="#switchbtn" prefHeight="25.0" prefWidth="197.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Switch" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </ToggleButton>
+            <Pane layoutX="5.0" layoutY="201.0" prefHeight="298.0" prefWidth="295.0">
+               <children>
+                  <DatePicker fx:id="date" layoutX="7.0" layoutY="168.0" prefHeight="39.0" prefWidth="282.0" promptText="Date Here" style="-fx-background-color: white; -fx-background-radius: 50;" />
+                  <TextField fx:id="topicF" layoutX="7.0" layoutY="54.0" prefHeight="39.0" prefWidth="282.0" promptText="Topic" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="timeF" layoutX="7.0" layoutY="110.0" prefHeight="39.0" prefWidth="282.0" promptText="Time" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button fx:id="saveBtn" layoutX="103.0" layoutY="235.0" mnemonicParsing="false" onAction="#savebtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <HBox layoutX="11.0" layoutY="146.0" spacing="6.0">
+               <children>
+                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addbtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Add" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="editBtn" mnemonicParsing="false" onAction="#editbtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Edit" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#deletebtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Delete" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Button fx:id="searchBtn" layoutX="209.0" layoutY="84.0" mnemonicParsing="false" onAction="#searchbtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="inputIDF" layoutX="14.0" layoutY="88.0" promptText="test" style="-fx-background-radius: 50;">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <Label fx:id="nameTable" layoutX="74.0" layoutY="14.0" text="Table Name" textAlignment="CENTER" textFill="#212936" textOverrun="CENTER_WORD_ELLIPSIS">
+               <font>
+                  <Font name="Impact" size="34.0" />
+               </font>
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Label>
+         </children></Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="12.0">
+         <children>
+            <TableView fx:id="sessionTable" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;" visible="false">
+              <columns>
+                <TableColumn editable="false" prefWidth="206.0" style="-fx-background-color: white;" text="Date" />
+                <TableColumn editable="false" prefWidth="361.0" style="-fx-background-color: white;" text="Tobic" />
+                  <TableColumn editable="false" minWidth="1.0" prefWidth="249.0" style="-fx-background-color: white;" text="Duration" />
+              </columns>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </TableView>
+            <TableView fx:id="sessionLeader" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;" visible="false">
+               <columns>
+                  <TableColumn editable="false" prefWidth="140.0" style="-fx-background-color: white;" text="Leader ID" />
+                  <TableColumn editable="false" prefWidth="248.0" style="-fx-background-color: white;" text="Role" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="226.0" style="-fx-background-color: white;" text="Leader Note" />
+                  <TableColumn prefWidth="202.0" style="-fx-background-color: white;" text="Attenace" />
+               </columns>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
