@@ -22,15 +22,15 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </ToggleButton>
-            <Pane layoutX="5.0" layoutY="201.0" prefHeight="298.0" prefWidth="295.0">
+            <Pane fx:id="ss1" layoutX="5.0" layoutY="201.0" prefHeight="298.0" prefWidth="295.0">
                <children>
                   <DatePicker fx:id="date" layoutX="7.0" layoutY="168.0" prefHeight="39.0" prefWidth="282.0" promptText="Date Here" style="-fx-background-color: white; -fx-background-radius: 50;" />
-                  <TextField fx:id="topicF" layoutX="7.0" layoutY="54.0" prefHeight="39.0" prefWidth="282.0" promptText="Topic" style="-fx-background-radius: 50;">
+                  <TextField fx:id="F1" layoutX="7.0" layoutY="54.0" prefHeight="39.0" prefWidth="282.0" promptText="Topic" style="-fx-background-radius: 50;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="timeF" layoutX="7.0" layoutY="110.0" prefHeight="39.0" prefWidth="282.0" promptText="Time" style="-fx-background-radius: 50;">
+                  <TextField fx:id="F2" layoutX="7.0" layoutY="110.0" prefHeight="39.0" prefWidth="282.0" promptText="Time" style="-fx-background-radius: 50;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -66,7 +66,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <TextField fx:id="inputIDF" layoutX="14.0" layoutY="88.0" promptText="test" style="-fx-background-radius: 50;">
+            <TextField fx:id="IN" layoutX="14.0" layoutY="88.0" promptText="test" style="-fx-background-radius: 50;">
                <font>
                   <Font size="15.0" />
                </font></TextField>
@@ -91,7 +91,7 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
             </TableView>
-            <TableView fx:id="sessionLeader" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;" visible="false">
+            <TableView fx:id="sessionLeader" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;">
                <columns>
                   <TableColumn editable="false" prefWidth="140.0" style="-fx-background-color: white;" text="Leader ID" />
                   <TableColumn editable="false" prefWidth="248.0" style="-fx-background-color: white;" text="Role" />
