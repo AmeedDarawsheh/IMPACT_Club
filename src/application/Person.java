@@ -1,4 +1,48 @@
 package application;
-public class Person {
 
-}
+    // Inner class to represent each member
+    public  class Person {
+        private String ssn;
+        private String fullName;
+        private String address;
+        private String startDate;
+        private String bod;
+        private String userName;
+        private String phoneNumber;
+        private String gender;
+        private int points;
+
+        public Person(String ssn, String fullName, String address, String startDate, String bod, String userName, String phoneNumber, String gender, int points) {
+            this.ssn = ssn;
+            this.fullName = fullName;
+            this.address = address;
+            this.startDate = startDate;
+            this.bod = bod;
+            this.userName = userName;
+            this.phoneNumber = phoneNumber;
+            this.gender = gender;
+            this.points = points;
+        }
+
+        // Getters for each property
+        public String getSsn() { return ssn; }
+        public String getFullName() { return fullName; }
+        public String getAddress() { return address; }
+        public String getStartDate() { return startDate; }
+        public String getBod() { return bod; }
+        public String getUserName() { return userName; }
+        public String getPhoneNumber() { return phoneNumber; }
+        public String getGender() { return gender; }
+        public int getPoints() { return points; }
+        public void setSsn(String ssn) { this.ssn = ssn; }
+        
+        public void setLastName(String fullName) { this.fullName = fullName; }
+      
+        public void setCity(String city) { this.address = city; }
+        public void setStartDate(String startDate) { this.startDate = startDate; }
+        public void setBod(String bod) { this.bod = bod; }
+        public void setUserName(String userName) { this.userName = userName; }
+        public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+        public void setGender(String gender) { this.gender = gender; }
+        public void setPoints(int points) { this.points = points; }
+    }

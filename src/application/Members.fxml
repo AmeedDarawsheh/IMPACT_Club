@@ -16,17 +16,18 @@
    <children>
       <AnchorPane layoutY="14.0" prefHeight="697.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
          <children>
-            <TableView fx:id="tableView" fixedCellSize="10.0" layoutX="16.0" layoutY="59.0" prefHeight="593.0" prefWidth="1142.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30;">
+            <TableView fx:id="tableView" fixedCellSize="10.0" layoutX="16.0" layoutY="59.0" prefHeight="593.0" prefWidth="1142.0" style="-fx-background-color: white; -fx-background-radius: 00 00 30 30; -fx-fixed-cell-size: 30;">
               <columns>
                   <TableColumn fx:id="idCol" prefWidth="76.79998397827148" resizable="false" text="ID Member" />
-                <TableColumn fx:id="nameCol" prefWidth="272.7999725341797" resizable="false" text="Name" />
-                  <TableColumn fx:id="addressCol" prefWidth="148.79998779296875" resizable="false" text="address" />
-                  <TableColumn fx:id="memberSinceCol" prefWidth="129.5999755859375" resizable="false" text="Member Since" />
-                  <TableColumn fx:id="dobCol" prefWidth="116.800048828125" resizable="false" text="Date of Birth" />
-                <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="88.0" resizable="false" text="gmail " />
-                  <TableColumn fx:id="phoneCol" prefWidth="125.60003662109375" text="Phone number" />
-                  <TableColumn fx:id="pointsCol" prefWidth="75.0" text="points" />
-                  <TableColumn fx:id="genderCol" prefWidth="75.0" text="gender " />
+                <TableColumn fx:id="nameCol" prefWidth="237.5999755859375" resizable="false" text="Name" />
+                  <TableColumn fx:id="addressCol" prefWidth="136.80001831054688" resizable="false" text="address" />
+                  <TableColumn fx:id="memberSinceCol" prefWidth="156.79998779296875" resizable="false" text="Member Since" />
+                  <TableColumn fx:id="dobCol" prefWidth="111.20001220703125" resizable="false" text="Date of Birth" />
+                <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="104.79998779296875" resizable="false" text="gmail " />
+                  <TableColumn fx:id="phoneCol" prefWidth="116.79998779296875" text="Phone number" />
+                  <TableColumn fx:id="pointsCol" prefWidth="46.39990234375" text="points" />
+                  <TableColumn fx:id="genderCol" prefWidth="53.60003662109375" text="gender " />
+                  <TableColumn fx:id="actionCol" prefWidth="148.0" text="Action" />
               </columns>
             </TableView>
             <ComboBox fx:id="columnComboBox" layoutX="240.0" layoutY="21.0" prefWidth="150.0" />
@@ -51,7 +52,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="587.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="38.0" />
+            <Button layoutX="587.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="26.0" prefWidth="38.0" />
             <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="595.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/loupe.png" />

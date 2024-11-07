@@ -2,6 +2,8 @@ package application;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,21 +50,29 @@ public class SageController implements Initializable {
 		addBtn.setVisible(false);
 		addBtn.setText("Add Plan");
 	}
-	public void membersB(ActionEvent e ) throws IOException {	
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Members.fxml"));
+	public void membersB(ActionEvent e) throws IOException { 
+		Platform.runLater(() -> {
+	        try {
+	    System.out.println("Loading Members.fxml...");
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("Members.fxml"));
 	    Parent fxml = loader.load();
 	    MembersController memberController = loader.getController();
 	    
-	    memberController.setl();
-		
-		
+	    System.out.println("Calling setl on MembersController...");
+	    memberController.initialize(); // Load data
+
 	    stackPane.getChildren().clear();
-		stackPane.getChildren().setAll(fxml);
-		title.setText("Members");
-		addBtn.setVisible(true);
-		addBtn.setText("Add Member");
-		currentPage = "Members";
-		
+	    stackPane.getChildren().setAll(fxml);
+
+	    title.setText("Members");
+	    addBtn.setVisible(true);
+	    addBtn.setText("Add Member");
+	    currentPage = "Members";
+	        } catch (IOException ex) {
+	            ex.printStackTrace();
+	        }
+	    });
+	    System.out.println("Members page loaded successfully.");
 	}
 	public void plansB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Plans.fxml"));

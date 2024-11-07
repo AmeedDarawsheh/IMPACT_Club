@@ -15,11 +15,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-public class UserPageProjectController implements Initializable {	
+//public class UserPageProjectController implements Initializable {	
 	
 	
 	
-	@FXML
+	/*@FXML
     private TableView<Member> tableViewMemberSameProject;
     
     @FXML
@@ -105,5 +105,5 @@ public class UserPageProjectController implements Initializable {
 		
 		
 		
-	}
-}
+	}*/
+//}
