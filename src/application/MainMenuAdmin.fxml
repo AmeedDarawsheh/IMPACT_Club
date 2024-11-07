@@ -84,7 +84,22 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="plansB" mnemonicParsing="false" onAction="#plansB" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button fx:id="session" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" translateX="-20.0">
+                           <image>
+                              <Image url="@icons/training.png" />
+                           </image>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="plansB" mnemonicParsing="false" onAction="#plansB" prefHeight="104.0" prefWidth="200.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
