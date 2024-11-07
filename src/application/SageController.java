@@ -48,9 +48,15 @@ public class SageController implements Initializable {
 		addBtn.setVisible(false);
 		addBtn.setText("Add Plan");
 	}
-	public void membersB(ActionEvent e ) throws IOException {		
-		Parent fxml = FXMLLoader.load(getClass().getResource("Members.fxml"));
-		stackPane.getChildren().removeAll();
+	public void membersB(ActionEvent e ) throws IOException {	
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Members.fxml"));
+	    Parent fxml = loader.load();
+	    MembersController memberController = loader.getController();
+	    
+	    memberController.setl();
+		
+		
+	    stackPane.getChildren().clear();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Members");
 		addBtn.setVisible(true);
