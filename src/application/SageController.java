@@ -20,7 +20,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 public class SageController implements Initializable {
 	@FXML
-	private Button overviewB,logoutB,membersB,projectsB,plansB;
+	private Button overviewB,logoutB,membersB,projectsB,plansB,sessionB,settingsBtn;
 	@FXML
 	private AnchorPane scenePane;
 	Stage stage;		
@@ -38,6 +38,7 @@ public class SageController implements Initializable {
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);
 			title.setText("OverView");
+			addBtn.setVisible(false);
 		}catch(IOException ex ) {
 		//	Logger.getLogger(SageController.class.getName()).log(Level.SEVERE,null, ex);
 		}	
@@ -49,6 +50,7 @@ public class SageController implements Initializable {
 		title.setText("OverView");
 		addBtn.setVisible(false);
 		addBtn.setText("Add Plan");
+<<<<<<< HEAD
 	}
 	public void membersB(ActionEvent e) throws IOException { 
 		Platform.runLater(() -> {
@@ -73,6 +75,32 @@ public class SageController implements Initializable {
 	        }
 	    });
 	    System.out.println("Members page loaded successfully.");
+=======
+	}	
+	public void settingsBtn(ActionEvent e) throws IOException {
+		Parent fxml = FXMLLoader.load(getClass().getResource("AdminSettings.fxml"));
+		stackPane.getChildren().removeAll();
+		stackPane.getChildren().setAll(fxml);
+		title.setText("settings");
+		addBtn.setVisible(false);
+	}	
+	public void sessionB(ActionEvent e ) throws IOException {	
+		Parent fxml = FXMLLoader.load(getClass().getResource("AdminSessionPage.fxml"));
+		stackPane.getChildren().removeAll();
+		stackPane.getChildren().setAll(fxml);
+		title.setText("Session");
+		addBtn.setVisible(false);
+		addBtn.setText("Session");
+	}	
+	public void membersB(ActionEvent e ) throws IOException {		
+		Parent fxml = FXMLLoader.load(getClass().getResource("Members.fxml"));
+		stackPane.getChildren().removeAll();
+		stackPane.getChildren().setAll(fxml);
+		title.setText("Members");
+		addBtn.setVisible(true);
+		addBtn.setText("Add Member");
+		currentPage = "Members";		
+>>>>>>> 4548cecb4b56c16973691fac821f1d7a994baf6f
 	}
 	public void plansB(ActionEvent e ) throws IOException {		
 		Parent fxml = FXMLLoader.load(getClass().getResource("Plans.fxml"));
@@ -89,7 +117,7 @@ public class SageController implements Initializable {
 		title.setText("Projects");
 		addBtn.setVisible(true);
 		addBtn.setText("Add Project");
-		 currentPage = "Projects"; 
+		currentPage = "Projects"; 
 	}	
 	public void logout(ActionEvent e) throws IOException {	
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -106,6 +134,12 @@ public class SageController implements Initializable {
 			stage.show();	
 		}				
 	}
+	
+	
+
+	
+	
+	
 	  @FXML
 	    public void handleAddButton(ActionEvent e) throws IOException {
 	        switch (currentPage) {
