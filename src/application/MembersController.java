@@ -45,6 +45,11 @@ public class MembersController {
     private TableColumn<Person, String> genderCol;
 
     private ObservableList<Person> Data;
+    public void setl() {
+        loadDataFromDatabase();
+        tableView.setItems(Data);
+        tableView.refresh();
+    }
 
     public void initialize() {
         Data = FXCollections.observableArrayList();
@@ -67,7 +72,7 @@ public class MembersController {
         tableView.refresh();
     }
 
-    private void loadDataFromDatabase() {
+    public void loadDataFromDatabase() {
      DatabaseConnection database =new DatabaseConnection();
 
         String query = "SELECT p.ssn, p.first_name, p.middle_name, p.last_name, p.street, p.city, "
@@ -93,7 +98,7 @@ public class MembersController {
                 Data.add(new Person(ssn, fullName, address, startDate, bod, email, phoneNumber, gender, points));
             }
             tableView.setItems(Data); // Set the data
-            tableView.refresh();
+            //tableView.refresh();
             
 
           
@@ -138,4 +143,10 @@ public class MembersController {
         public String getGender() { return gender; }
         public int getPoints() { return points; }
     }
+    @FXML
+    private void refresh() { 
+    
+    	Data.clear();
+	loadDataFromDatabase();
+}
 }
