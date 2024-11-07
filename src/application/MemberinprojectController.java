@@ -16,7 +16,37 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Observable;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Callback;
+import javafx.scene.control.Button;
 public class MemberinprojectController {
  DatabaseConnection data= new DatabaseConnection();
     @FXML
@@ -37,12 +67,15 @@ public class MemberinprojectController {
     @FXML
     private TableColumn<PersonInProject, Integer> involvementLevelCol;
     @FXML
+    private TableColumn<PersonInProject, String> actionCol;
+    
+    @FXML
     private ComboBox<String> columnComboBox;
     @FXML
     private TextField searchField;
     private ObservableList<PersonInProject> projectMemberData;
     private int projectId;
-
+    PersonInProject person=null;
 	public void setProjectId(int projectId) {
 	       this.projectId = projectId;
 	       loadDataFromDatabase(projectId);
@@ -51,17 +84,108 @@ public class MemberinprojectController {
     public void initialize() {
         projectMemberData = FXCollections.observableArrayList();
 
-        // Set up columns to map to PersonInProject properties
+       
         memberIdCol.setCellValueFactory(new PropertyValueFactory<>("memberId"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         roleInProjectCol.setCellValueFactory(new PropertyValueFactory<>("roleInProject"));
         feedbackCol.setCellValueFactory(new PropertyValueFactory<>("feedback"));
         involvementLevelCol.setCellValueFactory(new PropertyValueFactory<>("projectInvolvementLevel"));
         columnComboBox.setItems(FXCollections.observableArrayList("Member ID", "Name", "Role in Project", "Feedback", "Project Involvement Level"));
+        actionCol.setCellFactory(param -> new TableCell<>() {
+            private final Button deleteButton = new Button("Delete");
+            private final Button editButton = new Button("Edit");
 
-        // Load data from the database for a specific project
-        loadDataFromDatabase(projectId); // Replace with the desired project ID
+            {
+                deleteButton.setStyle("-fx-text-fill: red;");
+                editButton.setStyle("-fx-text-fill: blue;");
+
+                deleteButton.setOnAction(event -> {
+                    PersonInProject selectedPerson = getTableView().getItems().get(getIndex());
+                    deletePersonInProject(selectedPerson);
+                    refresh();  
+                });
+
+                editButton.setOnAction(event -> {
+                    PersonInProject selectedPerson = getTableView().getItems().get(getIndex());
+                    editPersonInProject(selectedPerson);
+                });
+            }
+            private void deletePersonInProject(PersonInProject person) {
+                String query = "DELETE FROM \"IMPACT Club\".memberproject WHERE projectid = ? AND memberid = (SELECT memberid FROM \"IMPACT Club\".member WHERE ssn = ?)";
+                try (Connection conn = data.getConnection();
+                     PreparedStatement stmt = conn.prepareStatement(query)) {
+
+                    stmt.setInt(1, projectId);
+                    stmt.setString(2, person.getMemberId());
+                    stmt.executeUpdate();
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            private void editPersonInProject(PersonInProject person) {
+                try {
+                    
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("editMemProject.fxml"));
+                    Parent root = loader.load();
+
+                    
+                    EditMemberProjectFieldController controller = loader.getController();
+                    controller.setPerson(person); 
+
+                    
+                    Stage stage = new Stage();
+                    stage.setTitle("Edit Member in Project");
+                    stage.setScene(new Scene(root));
+                    stage.initModality(Modality.APPLICATION_MODAL); 
+                    stage.showAndWait();
+
+                    
+                    if (controller.isSaveClicked()) {
+                        
+                        updatePersonInDatabase(person);
+                        refresh(); 
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            private void updatePersonInDatabase(PersonInProject person) {
+                String query = "UPDATE \"IMPACT Club\".memberproject SET roleinproject = ?, projectfeedback = ?, projectinvolvementlevel = ? WHERE projectid = ? AND memberid = (SELECT memberid FROM \"IMPACT Club\".member WHERE ssn = ?)";
+                try (Connection conn = data.getConnection();
+                     PreparedStatement stmt = conn.prepareStatement(query)) {
+
+                    stmt.setString(1, person.getRoleInProject());
+                    stmt.setString(2, person.getFeedback());
+                    stmt.setInt(3, person.getProjectInvolvementLevel());
+                    stmt.setInt(4, projectId);
+                    stmt.setString(5, person.getMemberId()); 
+
+                    stmt.executeUpdate();
+
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    HBox hBox = new HBox(editButton, deleteButton);
+                    hBox.setSpacing(10);
+                    setGraphic(hBox);
+                }
+            }
+        });
+        
+        loadDataFromDatabase(projectId); 
     }
+                    
     @FXML
     private void handleSearch() {
         String selectedColumn = columnComboBox.getValue();
@@ -75,7 +199,7 @@ public class MemberinprojectController {
     private void filterData(String column, String value) {
         String dbColumn;
 
-        // Map the user-friendly column names to database columns
+        
         switch (column) {
             case "Member ID":
                 dbColumn = "p.ssn";
@@ -96,7 +220,7 @@ public class MemberinprojectController {
                 return;
         }
 
-        // Clear the current data
+        
         projectMemberData.clear();
 
        
@@ -111,13 +235,13 @@ public class MemberinprojectController {
         try (Connection conn = data.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
         	if ("Project Involvement Level".equals(column)) {
-                // For integer fields, cast the value to integer
+                
                 stmt.setInt(2, Integer.parseInt(value));
             } else {
-                // For string fields, use ILIKE for case-insensitive search
+                
                 stmt.setString(2, "%" + value + "%");
             }
-            stmt.setInt(1, projectId);  // Replace with the appropriate project ID or make it dynamic
+            stmt.setInt(1, projectId);  
 
             ResultSet rs = stmt.executeQuery();
 
@@ -131,73 +255,16 @@ public class MemberinprojectController {
                 projectMemberData.add(new PersonInProject(memberId, name, roleInProject, feedback, involvementLevel));
             }
 
-            tableView.setItems(projectMemberData);  // Display filtered data in TableView
+            tableView.setItems(projectMemberData);  
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    @FXML
-    private void enableEditing() {
-        tableView.setEditable(true);
-        setColumnEditable();
-    }
-    private void setColumnEditable() {
-        tableView.setEditable(true);
+    
 
-        nameCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        nameCol.setOnEditCommit(event -> {
-            PersonInProject person = event.getRowValue();
-            person.setName(event.getNewValue());
-        });
 
-        roleInProjectCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        roleInProjectCol.setOnEditCommit(event -> {
-            PersonInProject person = event.getRowValue();
-            person.setRoleInProject(event.getNewValue());
-        });
-
-        feedbackCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        feedbackCol.setOnEditCommit(event -> {
-            PersonInProject person = event.getRowValue();
-            person.setFeedback(event.getNewValue());
-        });
-
-        involvementLevelCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        involvementLevelCol.setOnEditCommit(event -> {
-            PersonInProject person = event.getRowValue();
-            person.setProjectInvolvementLevel(event.getNewValue());
-        });
-    }
-    // Save the changes to the database on Save button click
-    @FXML
-    private void saveChanges() {
-       
-    	String updateQuery = "UPDATE \"IMPACT Club\".memberproject "
-                + "SET roleinproject = ?, projectfeedback = ?, projectinvolvementlevel = ? "
-                + "WHERE memberid = (SELECT memberid FROM \"IMPACT Club\".member WHERE ssn = ?) "
-                + "AND projectid = ?";
-
-try (Connection conn = data.getConnection();
-  PreparedStatement stmt = conn.prepareStatement(updateQuery)) {
-
- for (PersonInProject person : projectMemberData) {
-     stmt.setString(1, person.getRoleInProject());
-     stmt.setString(2, person.getFeedback());
-     stmt.setInt(3, person.getProjectInvolvementLevel());
-     stmt.setString(4, person.getMemberId()); 
-     stmt.setInt(5, projectId); // Project ID as specified
-
-     stmt.executeUpdate();
- }
-
- System.out.println("Changes saved to the database.");
-
-} catch (Exception e) {
- e.printStackTrace();
-}
-
-    }
+    
     @FXML
 private void refresh() { 
     	projectMemberData.clear();
@@ -234,5 +301,34 @@ private void refresh() {
         } catch (Exception e) {
             e.printStackTrace();
         }
+   
     }
-}
+    @FXML
+    private void handleAddMember() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("addMemProject.fxml"));
+            Parent root = loader.load();
+
+           
+            AddMemberProjectController controller = loader.getController();
+            controller.setProjectId(projectId); 
+
+            
+            Stage stage = new Stage();
+            stage.setTitle("Add Member in Project");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL); 
+            stage.showAndWait();
+
+          
+            if (controller.isSaveClicked()) {
+                refresh(); 
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+            }
+            

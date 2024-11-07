@@ -29,13 +29,13 @@
                   <TableColumn fx:id="genderCol" prefWidth="75.0" text="gender " />
               </columns>
             </TableView>
-            <ComboBox layoutX="240.0" layoutY="21.0" prefWidth="150.0" />
+            <ComboBox fx:id="columnComboBox" layoutX="240.0" layoutY="21.0" prefWidth="150.0" />
             <Label layoutX="44.0" layoutY="11.0" prefHeight="46.0" prefWidth="202.0" text="Search according to:" textFill="#003366">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="414.0" layoutY="21.0" prefHeight="26.0" prefWidth="211.0" promptText="Enter the value " />
+            <TextField fx:id="searchField" layoutX="414.0" layoutY="21.0" prefHeight="26.0" prefWidth="211.0" promptText="Enter the value " />
             <Button layoutX="1013.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Send mail " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="9.0" />

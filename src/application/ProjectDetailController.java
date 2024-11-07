@@ -28,7 +28,7 @@ public class ProjectDetailController implements Initializable {
 	@FXML
 	Button addBtn;
 	public int projectId;
-	
+	String currentPage;
 	public void setProjectId(int projectId) {
         this.projectId = projectId;
         System.out.print(projectId);
@@ -95,13 +95,13 @@ public class ProjectDetailController implements Initializable {
 	    Parent fxml = loader.load();
 	    MemberinprojectController memberinprojectController = loader.getController();
 	    memberinprojectController.setProjectId(projectId);
-
+         currentPage="memberinproject";
 		
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Member in Project");
 		addBtn.setVisible(true);
-		addBtn.setText("Add Project");
+		addBtn.setText("Add Member to  Project");
 	}	
 	public void logout(ActionEvent e) {
 		
@@ -115,5 +115,21 @@ public class ProjectDetailController implements Initializable {
 			System.out.println("You successfully logged out!");
 			stage.close();
 		}				
-	}	
+	}
+	  @FXML
+	    public void handleAddButton(ActionEvent e) throws IOException {
+	        switch (currentPage) {
+	            case "memberinproject":
+	                //openAddMemberPage();
+	                break;
+	            case "Projects":
+	              //  openAddProjectPage();
+	                break;
+	            
+	            
+	            default:
+	                break;
+	        }
+	    }
+	  
 }
