@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SessionController">
+<AnchorPane prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SessionController">
    <children>
       <Pane layoutX="852.0" prefHeight="690.0" prefWidth="308.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="850.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
          <children>
@@ -40,11 +40,21 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
+                  <TextField fx:id="F3" layoutX="7.0" layoutY="167.0" prefHeight="39.0" prefWidth="282.0" promptText="Notes" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="F4" layoutX="7.0" layoutY="7.0" prefHeight="39.0" prefWidth="282.0" promptText="Session ID" style="-fx-background-radius: 50;">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                </children>
             </Pane>
             <HBox layoutX="11.0" layoutY="146.0" spacing="6.0">
                <children>
-                  <Button fx:id="addBtn" mnemonicParsing="false" onAction="#addbtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Add" textFill="WHITE">
+                  <Button mnemonicParsing="false" onAction="#addbtn" prefWidth="90.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Add" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -79,24 +89,26 @@
                </padding>
             </Label>
          </children></Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="12.0">
+      <Pane prefHeight="659.0" prefWidth="822.0" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="12.0">
          <children>
             <TableView fx:id="sessionTable" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;" visible="false">
               <columns>
-                <TableColumn editable="false" prefWidth="206.0" style="-fx-background-color: white;" text="Date" />
-                <TableColumn editable="false" prefWidth="361.0" style="-fx-background-color: white;" text="Tobic" />
-                  <TableColumn editable="false" minWidth="1.0" prefWidth="249.0" style="-fx-background-color: white;" text="Duration" />
+                  <TableColumn fx:id="IdCol" prefWidth="75.0" style="-fx-background-color: white;" text="ID" />
+                <TableColumn fx:id="dateCol" editable="false" prefWidth="206.0" style="-fx-background-color: white;" text="Date" />
+                <TableColumn fx:id="topicCol" editable="false" prefWidth="361.0" style="-fx-background-color: white;" text="Tobic" />
+                  <TableColumn fx:id="durationCol" editable="false" minWidth="1.0" prefWidth="249.0" style="-fx-background-color: white;" text="Duration" />
               </columns>
                <padding>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
             </TableView>
-            <TableView fx:id="sessionLeader" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;">
+            <TableView fx:id="sessionLeaderTable" prefHeight="666.0" prefWidth="828.0" style="-fx-background-radius: 20;">
                <columns>
-                  <TableColumn editable="false" prefWidth="140.0" style="-fx-background-color: white;" text="Leader ID" />
-                  <TableColumn editable="false" prefWidth="248.0" style="-fx-background-color: white;" text="Role" />
-                  <TableColumn editable="false" minWidth="0.0" prefWidth="226.0" style="-fx-background-color: white;" text="Leader Note" />
-                  <TableColumn prefWidth="202.0" style="-fx-background-color: white;" text="Attenace" />
+                  <TableColumn fx:id="sessionIdCol" prefWidth="75.0" style="-fx-background-color: white;" text="Session ID" />
+                  <TableColumn fx:id="leaderIdColumn" editable="false" prefWidth="140.0" style="-fx-background-color: white;" text="Leader ID" />
+                  <TableColumn fx:id="roleColumn" editable="false" prefWidth="248.0" style="-fx-background-color: white;" text="Role" />
+                  <TableColumn fx:id="leaderNotesColumn" editable="false" minWidth="0.0" prefWidth="164.00006103515625" style="-fx-background-color: white;" text="Leader Note" />
+                  <TableColumn fx:id="attendanceColumn" prefWidth="184.00006103515625" style="-fx-background-color: white;" text="Attendance" />
                </columns>
                <padding>
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />

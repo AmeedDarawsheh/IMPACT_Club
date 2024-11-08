@@ -169,7 +169,6 @@ public class EditMemController {
                 alert.setHeaderText(null);
                 alert.setContentText("Member data updated successfully.");
                 alert.showAndWait();
-
             } catch (SQLException e) {
                 conn.rollback();
                 e.printStackTrace();

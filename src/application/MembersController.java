@@ -167,6 +167,7 @@ DatabaseConnection data =new DatabaseConnection();
                     stage.setTitle("Edit Member");
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.showAndWait();
+                    tableView.getItems().clear();
 
                     refreshTable();  // Refresh the table after the edit form is closed
                 } catch (IOException e) {
