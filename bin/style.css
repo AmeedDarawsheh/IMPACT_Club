@@ -1,7 +1,7 @@
 /* dark-theme.css */
 
 /* Apply black background to all common Pane types */
-.pane, .vbox, .hbox, .border-pane, .stack-pane, .grid-pane, .flow-pane, .anchor-pane {
+.vbox, .hbox, .border-pane, .stack-pane, .grid-pane, .flow-pane, .anchor-pane {
     -fx-background-color: #000000;
 }
 
@@ -13,4 +13,14 @@
 .button {
     -fx-background-color: #333333;
     -fx-text-fill: #FFFFFF;
+}
+
+.pane1 {
+    -fx-background-color: #1e1e1e; /* Dark gray for the pane background */
+}
+.pane2 {
+    -fx-background-color: #2e2e2e; /* Dark gray for the pane background */
+}
+.pane3 {
+    -fx-background-color: #404040; /* Dark gray for the pane background */
 }
