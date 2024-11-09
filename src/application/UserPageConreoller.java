@@ -107,8 +107,9 @@ public class UserPageConreoller implements Initializable{
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);	
 		}
-	 public void plan(ActionEvent e) throws IOException {	
-		 	Parent fxml = FXMLLoader.load(getClass().getResource("UserPagePlan.fxml"));
+	 public void session(ActionEvent e) throws IOException {	
+		 	Parent fxml = FXMLLoader.load(getClass().getResource("UserSessionPage.fxml"));
+		 	
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);	
 	 	}

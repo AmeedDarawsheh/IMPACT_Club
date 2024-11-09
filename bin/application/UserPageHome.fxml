@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,14 +32,29 @@
                </children>
             </Pane>
             <ListView fx:id="UPEvent" editable="true" layoutX="14.0" layoutY="50.0" prefHeight="88.0" prefWidth="191.0" />
+            <Button layoutY="7.0" mnemonicParsing="false" onAction="#sendMailToColleague" prefHeight="134.0" prefWidth="290.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Send mail to  colleagues" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="9.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/telegram.png" />
+                     </image>
+                     <effect>
+                        <Glow level="0.35" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
-      <TableView layoutX="37.0" layoutY="318.0" prefHeight="492.0" prefWidth="978.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="314.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="memberTable" layoutX="13.0" layoutY="50.0" prefHeight="492.0" prefWidth="978.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="12.399999999999977" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="314.20000000000005" AnchorPane.topAnchor="50.0">
         <columns>
-          <TableColumn editable="false" prefWidth="441.0" resizable="false" text="Detalis" />
-          <TableColumn editable="false" minWidth="0.0" prefWidth="323.0" resizable="false" text="Contact" />
-            <TableColumn editable="false" prefWidth="122.0" resizable="false" text="Tier" />
-            <TableColumn prefWidth="203.0" resizable="false" text="Points" />
+          <TableColumn fx:id="nameColumn" editable="false" prefWidth="262.4000244140625" resizable="false" text="Name " />
+          <TableColumn fx:id="phoneColumn" editable="false" minWidth="0.0" prefWidth="170.39996337890625" resizable="false" text="Phone" />
+            <TableColumn fx:id="emailColumn" editable="false" prefWidth="454.3999938964844" resizable="false" text="Gmail" />
+            <TableColumn fx:id="pointsColumn" prefWidth="203.0" resizable="false" text="Points" />
         </columns>
       </TableView>
       <Label layoutX="407.0" layoutY="14.0" text="Members List in same Plan" textFill="#121826" AnchorPane.leftAnchor="407.0" AnchorPane.topAnchor="14.0">

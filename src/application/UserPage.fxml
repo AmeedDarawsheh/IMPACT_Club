@@ -74,14 +74,14 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" graphicTextGap="55.0" mnemonicParsing="false" onAction="#plan" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Plans" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button contentDisplay="RIGHT" graphicTextGap="55.0" mnemonicParsing="false" onAction="#session" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="My Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/calendar.png" />
+                              <Image url="@icons/teacher.png" />
                            </image>
                            <effect>
                               <Glow level="0.35" />
@@ -106,12 +106,12 @@
                   </Button>
                </children>
             </HBox>
-            <Label fx:id="name" layoutX="233.0" layoutY="63.0" prefHeight="30.0" prefWidth="206.0" textFill="WHITE">
+            <Label fx:id="name" layoutX="233.0" layoutY="63.0" prefHeight="30.0" prefWidth="296.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Line endX="90.0" endY="7.62939453125E-6" layoutX="349.0" layoutY="93.0" startX="-115.0" stroke="#f3f4f6" />
+            <Line endX="158.20001220703125" endY="7.62939453125E-6" layoutX="349.0" layoutY="93.0" startX="-115.0" stroke="#f3f4f6" />
             <Label fx:id="email" layoutX="233.0" layoutY="100.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />

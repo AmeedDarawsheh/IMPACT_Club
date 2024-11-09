@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="538.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageSettingsController">
+<AnchorPane prefHeight="538.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageSettingsController">
    <children>
       <Pane layoutX="12.0" layoutY="12.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="87.0" prefWidth="1342.0" style="-fx-background-color: white; -fx-background-radius: 50;" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
          <children>
@@ -36,10 +36,10 @@
             </Label>
             <TextField fx:id="fName" layoutX="33.0" layoutY="80.0" prefHeight="25.0" prefWidth="231.0" promptText="First Name" />
             <TextField fx:id="mName" layoutX="276.0" layoutY="80.0" prefHeight="25.0" prefWidth="231.0" promptText="Middle Name" />
-            <TextField fx:id="uField" layoutX="33.0" layoutY="191.0" prefHeight="25.0" prefWidth="231.0" promptText="User Name" />
+            <TextField fx:id="uField" layoutX="33.0" layoutY="191.0" prefHeight="25.0" prefWidth="231.0" promptText="Email" />
             <TextField fx:id="SAField" layoutX="33.0" layoutY="231.0" prefHeight="25.0" prefWidth="231.0" promptText="Street" />
             <TextField fx:id="lName" layoutX="33.0" layoutY="117.0" prefHeight="25.0" prefWidth="231.0" promptText="Last Name" />
-            <TextField fx:id="eField" layoutX="33.0" layoutY="154.0" prefHeight="25.0" prefWidth="231.0" promptText="Email Address" />
+            <TextField fx:id="pField" layoutX="33.0" layoutY="154.0" prefHeight="25.0" prefWidth="231.0" promptText="Phone number" />
             <TextField fx:id="CAField" layoutX="33.0" layoutY="269.0" prefHeight="25.0" prefWidth="231.0" promptText="City" />
             <Button fx:id="saveAcc" layoutX="158.0" layoutY="313.0" mnemonicParsing="false" onAction="#saveAccount" style="-fx-background-radius: 50; -fx-background-color: #212936;" text="Save Account Settings" textFill="WHITE">
                <font>
