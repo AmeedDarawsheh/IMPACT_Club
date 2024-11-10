@@ -1,30 +1,5 @@
 package application;
 import javafx.collections.FXCollections;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Connection;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Connection;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.view.JasperViewer;
-import java.io.InputStream;
-
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,22 +13,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
-import javax.swing.JFrame;
 public class UserSessionController implements Initializable{
 @FXML
 private TableView<SessionUser> sessionTable;
@@ -90,10 +57,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
     sessionTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
         selectedSession = newSelection;});
 }
-@FXML
-private void reload() {
-	loadSessionData();
-}
+
 private void loadSessionData() {
     
     sessions.clear();
@@ -135,30 +99,6 @@ private void loadSessionData() {
     }
 }
 @FXML
-private void handleReportSessionButtonClick() {
-    try {
-       DatabaseConnection data =new DatabaseConnection();
-       Connection nn=data.getConnection();
-       InputStream input =new FileInputStream("D:\\Documents\\GitHub\\IMPACT_Club\\src\\IMPACT.jrxml");
-       JasperDesign jd =JRXmlLoader.load(input);
-       JasperReport jr =JasperCompileManager.compileReport(jd);
-       JasperPrint jp=JasperFillManager.fillReport(jr, null,nn);
-       OutputStream os =new FileOutputStream(new File ("rep.pdf"));
-       //JasperExportManager.exportReportToPdfStream(jp,os);
-       //JFrame frame =new JFrame ();
-       //JasperViewer viewer = new JasperViewer(jp, false);
-      // frame.getContentPane().add(viewer);
-       //frame.pack();
-       //frame.setVisible(true);
-       
-    } catch (Exception e) {
-        System.err.println("Error displaying report: " + e.getMessage());
-        e.printStackTrace();
-    }
-}
-
-
-@FXML
 public void feedBack(ActionEvent e) throws IOException {
 	
 	
@@ -178,33 +118,6 @@ public void feedBack(ActionEvent e) throws IOException {
 	         alert.setTitle("No Session Selected");
 	         alert.setHeaderText(null);
 	         alert.setContentText("Please select a session to view feedback.");
-	         alert.showAndWait();
-	    }
-	sessions.clear();
-	loadSessionData();
-	
-}
-@FXML
-public void answers(ActionEvent e) throws IOException {
-	
-	
-	 if (selectedSession != null) {  // Ensure a project is selected
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnswersUserSession.fxml"));
-	        Parent root = loader.load();
-
-	        // Get the controller of the feedback scene
-	        UserAnswersController answerController = loader.getController();
-	        answerController.setAnswers(loginController.getLoggedInMemberId(),selectedSession.getSessionId());  // Pass the selected project
-
-	        Stage stage = new Stage();
-	        stage.setScene(new Scene(root));
-	        stage.show();
-	        loadSessionData();
-	    } else {
-	    	 Alert alert = new Alert(Alert.AlertType.WARNING);
-	         alert.setTitle("No Session Selected");
-	         alert.setHeaderText(null);
-	         alert.setContentText("Please select a session to view Answers.");
 	         alert.showAndWait();
 	    }
 	sessions.clear();

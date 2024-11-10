@@ -4,7 +4,6 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.StackedBarChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OverviewController">
+<AnchorPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="6.0" layoutY="7.0" prefHeight="683.0" prefWidth="1166.0" style="-fx-background-color: #F3F4F6;">
          <children>
@@ -109,9 +108,9 @@
                   <NumberAxis side="LEFT" />
                </yAxis>
             </LineChart>
-            <Pane layoutY="528.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
+            <Pane layoutY="486.0" prefHeight="85.0" prefWidth="1166.0" style="-fx-background-color: white;">
                <children>
-                  <Label layoutX="26.0" layoutY="6.0" text="Reports " textFill="#121826">
+                  <Label layoutX="26.0" layoutY="6.0" text="Recent Activity" textFill="#121826">
                      <font>
                         <Font name="System Bold" size="26.0" />
                      </font>
@@ -120,7 +119,6 @@
                   <Label layoutX="26.0" layoutY="53.0" text="New user registration" />
                </children>
             </Pane>
-            <Button fx:id="projectsReportButton" layoutX="35.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleProjectsReportButtonClick" text="Projects Report" />
          </children>
       </AnchorPane>
    </children>
