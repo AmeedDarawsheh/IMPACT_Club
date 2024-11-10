@@ -47,8 +47,13 @@ public class loginController {
             stage.centerOnScreen();
             stage.setResizable(false);
         }       
-        else if ( true
-        		 // isMember(username,password)
+<<<<<<< HEAD
+        else if ( 
+        		 isMember(username,password)
+=======
+        else if (
+        		isMember(username,password)
+>>>>>>> 8a7190e3b47d663a63476fb9326567972aa15e41
         		) {
 			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
 			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
