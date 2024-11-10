@@ -48,8 +48,13 @@ public class loginController {
             stage.setResizable(false);
         }       
 <<<<<<< HEAD
+<<<<<<< HEAD
         else if ( 
         		 isMember(username,password)
+=======
+        else if (
+        		isMember(username,password)
+>>>>>>> 8a7190e3b47d663a63476fb9326567972aa15e41
 =======
         else if (
         		isMember(username,password)
