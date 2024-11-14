@@ -1,3 +1,4 @@
+![IMG_4792](https://github.com/user-attachments/assets/be8cdb21-7e85-4218-9dc4-daed38af6153)
 # Requirements for the Impact Club Project 
 # Person Entity 
 
