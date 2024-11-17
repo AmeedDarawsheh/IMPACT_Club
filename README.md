@@ -37,3 +37,7 @@ These sessions enable leaders to monitor member progress, address individual nee
 # Summary 
 
 The Impact Club’s design centers on four core entities—Person, Projects, Plans, and Sessions—that together create a cohesive environment for meaningful self-development, leadership training, and social contribution. Through collaborative projects and guided sessions, the club equips members with essential skills, promoting resilience, empathy, and social responsibility. 
+
+---
+## Contact
+If you have any questions, feel free to contact us at [ce.ameed@gmail.com , afnanhassan888555@gmail.com].
