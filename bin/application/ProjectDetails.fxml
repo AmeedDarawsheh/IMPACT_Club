@@ -29,7 +29,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="backmenu" layoutX="14.0" layoutY="724.0" mnemonicParsing="false" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="back to project menue " textFill="WHITE">
+            <Button layoutX="14.0" layoutY="724.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="back to project menue " textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>

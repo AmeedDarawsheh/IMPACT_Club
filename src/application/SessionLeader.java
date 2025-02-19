@@ -14,7 +14,7 @@ public class SessionLeader {
         this.attendance = attendance;
     }
 
-    // Getter methods
+  
     public Integer getSessionId() {
         return sessionId;
     }

@@ -18,7 +18,7 @@ public class UserMessageSend {
     private String messageContent;
     private String subject;
     String gmailPas;
-    // Gmail SMTP server settings
+   
     private final String SMTP_SERVER = "smtp.gmail.com";
     private final String SMTP_PORT = "587";
 
@@ -49,17 +49,15 @@ public class UserMessageSend {
         return subject;
     }
 
-    // Method to send email using Gmail SMTP
     public boolean sendEmail() {
     
-        // Set up properties for Gmail SMTP
+        
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
         properties.put("mail.smtp.host", SMTP_SERVER);
         properties.put("mail.smtp.port", SMTP_PORT);
 
-        // Authenticate with Gmail
         Session session = Session.getInstance(properties, new Authenticator() {
         	
             @Override
@@ -70,14 +68,14 @@ public class UserMessageSend {
         });
 
         try {
-            // Create email message
+           
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(emailFrom));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailTo));
             message.setSubject(subject);
             message.setText(messageContent);
 
-            // Send email
+           
             Transport.send(message);
             System.out.println("Email sent successfully to " + emailTo);
             return true;

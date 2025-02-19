@@ -87,7 +87,7 @@ public void savePassword(ActionEvent e) {
         return;
     }
 
-    // If both conditions are met, update the password
+    
     if (isCurrentPassCorrect && isNewPassValid) {
         String updatePassSql = "UPDATE \"IMPACT Club\".person SET password = ? WHERE ssn = (SELECT ssn FROM \"IMPACT Club\".member WHERE memberid = ?)";
 
@@ -124,7 +124,7 @@ public void savePassword(ActionEvent e) {
 	        try (Connection conn = data.getConnection(); 
 	             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-	            // Set parameters for the update
+	  
 	            pstmt.setString(1, fNameS);
 	            pstmt.setString(2, mNameS);
 	            pstmt.setString(3, lNameS);
@@ -149,11 +149,11 @@ public void savePassword(ActionEvent e) {
 	    }
 	}
 
-	// Method to show alerts
+
 	private void showAlert(AlertType alertType, String title, String message) {
 	    Alert alert = new Alert(alertType);
 	    alert.setTitle(title);
-	    alert.setHeaderText(null); // No header
+	    alert.setHeaderText(null);
 	    alert.setContentText(message);
 	    alert.showAndWait();
 	}
@@ -207,7 +207,10 @@ public void savePassword(ActionEvent e) {
 		light.setToggleGroup(toggleGroup1);
 		fullscreen.setToggleGroup(toggleGroup2);
 		miniscreen.setToggleGroup(toggleGroup2);
-		
+		dark.setDisable(true);
+		light.setDisable(true);
+		fullscreen.setDisable(true);
+		miniscreen.setDisable(true);
 		// image1.setImage();  member image 
 		
 		loadMemberDetails();

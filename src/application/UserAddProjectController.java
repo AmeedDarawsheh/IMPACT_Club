@@ -30,7 +30,7 @@ public class UserAddProjectController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 	
-		// fill projects from member plan
+		
 		
 	}
 }

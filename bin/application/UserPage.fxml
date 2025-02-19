@@ -13,11 +13,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" styleClass="pane1" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageConreoller">
+<AnchorPane fx:id="scenePane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UserPageConreoller">
    <children>
-      <Pane prefHeight="230.0" prefWidth="1366.0" style="-fx-background-radius: 00 00 90 90;" styleClass="pane2" stylesheets="@../style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane prefHeight="230.0" prefWidth="1366.0" style="-fx-background-color: #212936; -fx-background-radius: 00 00 90 90;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane layoutX="24.0" layoutY="35.0" prefHeight="170.0" prefWidth="170.0" style="-fx-background-radius: 20;" styleClass="pane2" stylesheets="@../style.css">
+            <Pane layoutX="24.0" layoutY="35.0" prefHeight="170.0" prefWidth="170.0" style="-fx-background-color: #212936; -fx-background-radius: 20;">
                <children>
                   <ImageView fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -26,13 +26,13 @@
                   </ImageView>
                </children>
             </Pane>
-            <ToggleButton fx:id="themeToggleButton" layoutX="1196.0" layoutY="26.0" minWidth="30.0" mnemonicParsing="false" onAction="#toggleTheme" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 100;" styleClass="pane2" text="🌙" textFill="WHITE" />
-            <Button layoutX="1266.0" layoutY="26.0" mnemonicParsing="false" onAction="#Logout" prefHeight="30.0" prefWidth="86.0" style="-fx-background-radius: 100 100 100 100;" styleClass="pane2" text="Logout" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+            <ToggleButton fx:id="themeToggleButton" layoutX="1196.0" layoutY="26.0" minWidth="30.0" mnemonicParsing="false" onAction="#toggleTheme" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #212936; -fx-background-radius: 100;" text="🌙" textFill="WHITE" />
+            <Button layoutX="1266.0" layoutY="26.0" mnemonicParsing="false" onAction="#Logout" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Logout" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" styleClass="pane2">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/user.png" />
                      </image>
@@ -44,7 +44,7 @@
             </Button>
             <HBox layoutX="194.0" layoutY="176.0" spacing="6.0">
                <children>
-                  <Button contentDisplay="RIGHT" graphicTextGap="50.0" mnemonicParsing="false" onAction="#Home" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 100 100 100 100;" styleClass="pane2" text="Home" textAlignment="CENTER" textFill="WHITE">
+                  <Button contentDisplay="RIGHT" graphicTextGap="50.0" mnemonicParsing="false" onAction="#Home" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Home" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -59,7 +59,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#myProject" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 100 100 100 100;" styleClass="pane2" text="My Projects" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button contentDisplay="RIGHT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#myProject" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="My Projects" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -74,7 +74,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" graphicTextGap="55.0" mnemonicParsing="false" onAction="#session" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 100 100 100 100;" styleClass="pane2" text="My Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button contentDisplay="RIGHT" graphicTextGap="55.0" mnemonicParsing="false" onAction="#session" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="My Session" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -89,7 +89,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button contentDisplay="RIGHT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#settings" prefHeight="40.0" prefWidth="240.0" style="-fx-background-radius: 100 100 100 100;" styleClass="pane2" text="Settings" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+                  <Button contentDisplay="RIGHT" graphicTextGap="40.0" mnemonicParsing="false" onAction="#settings" prefHeight="40.0" prefWidth="240.0" style="-fx-background-color: #212936; -fx-background-radius: 100 100 100 100;" text="Settings" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -129,7 +129,7 @@
             </Label>
          </children>
       </Pane>
-      <AnchorPane layoutY="241.0" prefHeight="527.0" prefWidth="1366.0" styleClass="pane1" stylesheets="@../style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="230.0">
+      <AnchorPane layoutY="241.0" prefHeight="527.0" prefWidth="1366.0" style="-fx-background-color: #F3F4F6;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="230.0">
          <children>
             <StackPane fx:id="stackPane" layoutX="103.0" layoutY="-20.0" prefHeight="488.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>

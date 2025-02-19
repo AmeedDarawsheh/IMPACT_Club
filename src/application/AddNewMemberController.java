@@ -42,8 +42,7 @@ public class AddNewMemberController {
             Date startDate = Date.valueOf(startDatePicker.getValue());
             String generatedPassword = generateRandomPassword();
  DatabaseConnection database=new DatabaseConnection();
-            // Store in the database
-// Connection conn;
+ 
             try ( Connection conn = database.getConnection()) {
                 String query = "INSERT INTO \"IMPACT Club\".person (first_name, middle_name, last_name, ssn, user_name, phone_number, street,city, gender, BOD, start_date, password) VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = conn.prepareStatement(query);

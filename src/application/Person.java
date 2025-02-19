@@ -1,6 +1,6 @@
 package application;
 
-    // Inner class to represent each member
+  
     public  class Person {
         private String ssn;
         private String fullName;
@@ -12,7 +12,7 @@ package application;
         private String gender;
         private int points;
 
-        public Person(String ssn, String fullName, String address, String startDate, String bod, String userName, String phoneNumber, String gender, int points) {
+        public Person(String ssn, String fullName, String address, String startDate, String bod, String userName, String phoneNumber, String gender, int points ) {
             this.ssn = ssn;
             this.fullName = fullName;
             this.address = address;
@@ -21,10 +21,11 @@ package application;
             this.userName = userName;
             this.phoneNumber = phoneNumber;
             this.gender = gender;
+           
             this.points = points;
+            
         }
 
-        // Getters for each property
         public String getSsn() { return ssn; }
         public String getFullName() { return fullName; }
         public String getAddress() { return address; }

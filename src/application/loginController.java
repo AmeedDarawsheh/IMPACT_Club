@@ -34,8 +34,7 @@ public class loginController {
         String username = emailTextField.getText();
         String password = passwordField.getText();    
 
-        if (username.equals("a")
-        		//isLeader(username, password)
+        if (isLeader(username, password)
         		){
             // Load the next scene after successful login
             root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
@@ -47,8 +46,7 @@ public class loginController {
             stage.centerOnScreen();
             stage.setResizable(false);
         }       
-        else if ( true
-        		 // isMember(username,password)
+        else if ( isMember(username,password)
         		) {
 			root = FXMLLoader.load(getClass().getResource("UserPage.fxml"));
 			stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -86,10 +84,10 @@ public class loginController {
             ex.printStackTrace();
         }
 
-        return false; // User is not found or not a leader
+        return false; 
     }
 
-    // Getter method for the logged-in leader ID
+    
     public static int getLoggedInLeaderId() {
         return loggedInLeaderId;
     }
@@ -116,10 +114,10 @@ public class loginController {
             ex.printStackTrace();
         }
 
-        return false; // User is not found or not a leader
+        return false;
     }
 
-    // Getter method for the logged-in leader ID
+   
     public static int getLoggedInMemberId() {
         return loggedInMemberId;
     }
@@ -130,10 +128,7 @@ public class loginController {
         alert.showAndWait();
     }
 
-	public void signUp(ActionEvent e) {
-		System.out.println("sign up");		
 	
-	}
 	public void contactus(ActionEvent e) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("contactus.fxml"));
 		stage = (Stage)((Node)e.getSource()).getScene().getWindow();

@@ -40,7 +40,7 @@ public class AddMemberProjectController {
         String feedback = feedbackField.getText().trim();
 
         if (name.isEmpty() || roleInProject.isEmpty() ) {
-            // Add error handling for empty fields here if needed
+            
             return;
         }
 
@@ -85,7 +85,7 @@ public class AddMemberProjectController {
                 System.out.println("SSN not found for name: " + name);
             }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+           
         }
     }
 

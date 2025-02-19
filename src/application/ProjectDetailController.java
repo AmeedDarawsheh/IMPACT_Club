@@ -6,7 +6,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -29,6 +31,10 @@ public class ProjectDetailController implements Initializable {
 	Button addBtn;
 	public int projectId;
 	String currentPage;
+	public Stage stage2;
+    private Scene scene;
+    public Parent root;
+
 	public void setProjectId(int projectId) {
         this.projectId = projectId;
         System.out.print(projectId);
@@ -73,7 +79,7 @@ public class ProjectDetailController implements Initializable {
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Financial Plan");
-		addBtn.setVisible(true);
+		addBtn.setVisible(false);
 		addBtn.setText("Add Member");
 		
 	}
@@ -87,7 +93,7 @@ public class ProjectDetailController implements Initializable {
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Leader of project ");
-		addBtn.setVisible(true);
+		addBtn.setVisible(false);
 		addBtn.setText("Add Plan");
 	}
 	public void memberinproject(ActionEvent e ) throws IOException {
@@ -100,30 +106,61 @@ public class ProjectDetailController implements Initializable {
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Member in Project");
-		addBtn.setVisible(true);
+		addBtn.setVisible(false);
 		addBtn.setText("Add Member to  Project");
 	}	
-	public void logout(ActionEvent e) {
-		
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Logout");
-		alert.setHeaderText("You're about to logout!");
-		alert.setContentText("Do you want to save before exiting?: ");
-		
-		if(alert.showAndWait().get() == ButtonType.OK){
-			stage = (Stage) scenePane.getScene().getWindow();
-			System.out.println("You successfully logged out!");
-			stage.close();
-		}				
+	public void logout(ActionEvent e) throws IOException {
+		  if (stage2 == null) {
+		        Parent mainMenu = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+		        stage2 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+		        scene = new Scene(mainMenu);
+		        stage2.setScene(scene);
+		        stage2.setTitle("Admin Setup");
+		        stage2.centerOnScreen();
+		        stage2.setResizable(false);
+		    }
+
+		    Parent projectsContent = FXMLLoader.load(getClass().getResource("Projects.fxml"));
+
+		    
+		    StackPane stackPane = (StackPane) scene.lookup("#stackPane"); 
+
+		    stackPane.getChildren().clear();
+		    stackPane.getChildren().add(projectsContent);
+
+		 
+		    Label title = (Label) scene.lookup("#title"); 
+		    title.setText("Projects");
+
+		    Button addBtn = (Button) scene.lookup("#addBtn");
+		    addBtn.setVisible(true);
+		    addBtn.setText("Add Project");
+
+		    
+		    currentPage = "Projects";/* root = FXMLLoader.load(getClass().getResource("MainMenuAdmin.fxml"));
+         stage2 = (Stage) ((Node) e.getSource()).getScene().getWindow();
+         scene = new Scene(root);
+         stage2.setScene(scene);
+         stage2.show();
+         stage2.setTitle("Admin Setup");
+         stage2.centerOnScreen();
+         stage2.setResizable(false);
+		Parent fxml = FXMLLoader.load(getClass().getResource("Projects.fxml"));
+		stackPane.getChildren().removeAll();
+		stackPane.getChildren().setAll(fxml);
+		title.setText("Projects");
+		addBtn.setVisible(true);
+		addBtn.setText("Add Project");
+		currentPage = "Projects"; 	*/	
 	}
 	  @FXML
 	    public void handleAddButton(ActionEvent e) throws IOException {
 	        switch (currentPage) {
 	            case "memberinproject":
-	                //openAddMemberPage();
+	             
 	                break;
 	            case "Projects":
-	              //  openAddProjectPage();
+	              
 	                break;
 	            
 	            

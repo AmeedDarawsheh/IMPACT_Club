@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProjectController">
+   <children>
+      <Pane layoutX="75.0" layoutY="14.0" prefHeight="82.0" prefWidth="350.0" style="-fx-background-color: #212936; -fx-background-radius: 00 00 50 50;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="75.0" layoutY="17.0" text="Add Project" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="saveButton" layoutX="83.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #212936; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="181.0" layoutY="455.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: white;" text="Cancel">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="projectIdField" layoutX="130.0" layoutY="104.0" prefHeight="25.0" prefWidth="194.0" promptText="ID" />
+      <TextField fx:id="nameField" layoutX="130.0" layoutY="141.0" prefHeight="25.0" prefWidth="194.0" promptText="Name" />
+      <TextField fx:id="descriptionField" layoutX="130.0" layoutY="181.0" prefHeight="25.0" prefWidth="194.0" promptText="Description" />
+      <TextField fx:id="objectivesField" layoutX="130.0" layoutY="218.0" prefHeight="25.0" prefWidth="194.0" promptText="Objectives" />
+      <TextField fx:id="progressLevelField" layoutX="156.0" layoutY="260.0" prefHeight="25.0" prefWidth="168.0" promptText="Progress Level" />
+      <TextField fx:id="planIdField" layoutX="156.0" layoutY="297.0" prefHeight="25.0" prefWidth="168.0" promptText="ID" />
+      <DatePicker fx:id="startDatePicker" layoutX="156.0" layoutY="374.0" prefHeight="25.0" prefWidth="168.0" promptText="Start Date" />
+      <DatePicker fx:id="endDatePicker" layoutX="156.0" layoutY="411.0" prefHeight="25.0" prefWidth="168.0" promptText="End Date" />
+      <Label layoutX="32.0" layoutY="104.0" text="project ID">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="338.0" text="Status">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="181.0" text="Description">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="141.0" text=" Name">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="218.0" text="Objectives">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="260.0" text="Progress level">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="297.0" text="Plan ID">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="374.0" text="Start Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="411.0" text="End date ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <HBox layoutX="122.0" layoutY="338.0" prefHeight="26.0" prefWidth="210.0" spacing="20.0">
+         <children>
+            <RadioButton fx:id="inProgressRadio" mnemonicParsing="false" prefHeight="18.0" prefWidth="85.0" text="In progress" />
+            <RadioButton fx:id="completedRadio" mnemonicParsing="false" prefHeight="18.0" prefWidth="94.0" text="Completed" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

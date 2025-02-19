@@ -45,11 +45,9 @@ public class EditMemController {
     private Person member;
     private DatabaseConnection data = new DatabaseConnection();
 
-    // Called by the parent controller to pass the data for the selected member
     public void setMemberData(Person member) {
         this.member = member;
 
-        // Populate the form fields with the selected member's data
         ssnField.setText(member.getSsn());
         fullNameField.setText(member.getFullName() );
         addressField.setText(member.getAddress());
@@ -62,13 +60,12 @@ public class EditMemController {
             e.printStackTrace();
         }
 
-        // Parse and set the birth date
         try {
             birthDateField.setValue(LocalDate.parse(member.getBod(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         } catch (DateTimeParseException e) {
             e.printStackTrace();
         }
-        // Set gender radio button
+      
         if (member.getGender().equalsIgnoreCase("M")) {
             maleRadio.setSelected(true);
         } else {
@@ -78,25 +75,21 @@ public class EditMemController {
 
     @FXML
     private void initialize() {
-        // Group radio buttons
         ToggleGroup genderGroup = new ToggleGroup();
         maleRadio.setToggleGroup(genderGroup);
         femaleRadio.setToggleGroup(genderGroup);
-
-        // Save button action
         saveButton.setOnAction(event -> {
             saveMemberData();
             closeWindow();
         });
 
-        // Cancel button action
+    
         cancelButton.setOnAction(event -> closeWindow());
     }
 
     private void saveMemberData() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // Read and set new values from input fields to the Person object
         String newStartDate = startDateField.getValue().format(formatter);
         String newBirthDate = birthDateField.getValue().format(formatter);
         String newEmail = emailField.getText();
@@ -104,7 +97,6 @@ public class EditMemController {
         int newPoints = Integer.parseInt(pointsField.getText());
         String newGender = maleRadio.isSelected() ? "M" : "F";
 
-        // Debugging output to verify the new values are read correctly
         System.out.println("New Start Date: " + newStartDate);
         System.out.println("New Birth Date: " + newBirthDate);
         System.out.println("New Email: " + newEmail);
@@ -133,8 +125,6 @@ public class EditMemController {
                 String firstName = names[0];
                 String middleName = names.length > 1 ? names[1] : "";
                 String lastName = names.length > 2 ? names[2] : "";
-
-                // Update person table
                 personStmt.setString(1, firstName);
                 personStmt.setString(2, middleName);
                 personStmt.setString(3, lastName);
@@ -155,7 +145,7 @@ public class EditMemController {
                 int personUpdatedRows = personStmt.executeUpdate();
                 System.out.println("Person table rows updated: " + personUpdatedRows);
 
-                // Update member table
+              
                 memberStmt.setInt(1, member.getPoints());
                 memberStmt.setString(2, member.getSsn());
 
@@ -171,10 +161,10 @@ public class EditMemController {
                 alert.showAndWait();
             } catch (SQLException e) {
                 conn.rollback();
-                e.printStackTrace();
+               
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+          
         }
     }
     private void closeWindow() {

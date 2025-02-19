@@ -18,6 +18,17 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import java.util.Optional;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -69,13 +80,13 @@ DatabaseConnection data =new DatabaseConnection();
   
         loadDataFromDatabase();
         tableView.setItems(Data);
-        tableView.refresh();  // Explicitly refresh the table view
+        tableView.refresh(); 
     }
 
     public void initialize() {
         Data = FXCollections.observableArrayList();
 
-        // Set up columns to map to Person properties
+        
         idCol.setCellValueFactory(new PropertyValueFactory<>("ssn"));
         nameCol.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -104,10 +115,10 @@ DatabaseConnection data =new DatabaseConnection();
                 editButton.setStyle("-fx-text-fill: blue;");
 
                 deleteButton.setOnAction(event -> {
-                    // Get the person associated with the current row
+                    
                     Person selectedPerson = getTableView().getItems().get(getIndex());
 
-                    // Confirm deletion
+                    
                     Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
                     confirmAlert.setTitle("Delete Confirmation");
                     confirmAlert.setHeaderText("Are you sure you want to delete this entry?");
@@ -115,13 +126,13 @@ DatabaseConnection data =new DatabaseConnection();
 
                     Optional<ButtonType> result = confirmAlert.showAndWait();
                     if (result.isPresent() && result.get() == ButtonType.OK) {
-                        // Perform the deletion in the database
+                       
                         deletePersonCascade(selectedPerson.getSsn());
 
-                        // Remove from TableView
+                      
                         getTableView().getItems().remove(selectedPerson);
 
-                        // Show success alert
+                       
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                         successAlert.setTitle("Deletion Successful");
                         successAlert.setHeaderText(null);
@@ -169,7 +180,7 @@ DatabaseConnection data =new DatabaseConnection();
                     stage.showAndWait();
                     tableView.getItems().clear();
 
-                    refreshTable();  // Refresh the table after the edit form is closed
+                    refreshTable();  
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -255,7 +266,7 @@ DatabaseConnection data =new DatabaseConnection();
     private void filterData(String column, String value) {
         String dbColumn;
 
-        // Map GUI column names to database column names
+       
         switch (column) {
             case "SSN":
                 dbColumn = "p.ssn";
@@ -269,7 +280,7 @@ DatabaseConnection data =new DatabaseConnection();
             case "Start Date":
                 dbColumn = "p.start_date";
                 break;
-            case "Birth of Date":
+            case "Birth of date":
                 dbColumn = "p.bod";
                 break;
             case "Gmail":
@@ -285,10 +296,10 @@ DatabaseConnection data =new DatabaseConnection();
                 dbColumn = "p.gender";
                 break;
             default:
-                return; // Exit if column is not found
+                return;
         }
 
-        Data.clear(); // Clear the current data list
+        Data.clear();
 
         String query = "SELECT p.ssn, p.first_name || ' ' || p.middle_name || ' ' || p.last_name AS name, "
                 + "p.street || ', ' || p.city AS address, p.start_date, p.bod, p.user_name, "
@@ -298,19 +309,24 @@ DatabaseConnection data =new DatabaseConnection();
                 + "WHERE ";
 
    // Handle date columns specifically
-   if (column.equals("Start Date") || column.equals("Birth of Date")) {
+   if (column.equals("Start Date") || column.equals("Birth of date")) {
        query += dbColumn + " = TO_DATE(?, 'YYYY-MM-DD')";
-   } else {
+   } else if(column.equals("points")) {
+	   query += dbColumn + " = ?"; 
+   }
+   else {
        query += dbColumn + " ILIKE ?";
    }
 
    try (Connection conn = data.getConnection();
         PreparedStatement stmt = conn.prepareStatement(query)) {
 
-       if (column.equals("Start Date") || column.equals("Birth of Date")) {
-           stmt.setString(1, value); // For date columns, use the input directly as a date
-       } else {
-           stmt.setString(1, "%" + value + "%"); // Use ILIKE for case-insensitive search
+       if (column.equals("Start Date") || column.equals("Birth of date")) {
+           stmt.setString(1, value); 
+       } else if (column.equals("points")) {
+    	   stmt.setInt(1, Integer.parseInt(value.trim()));}
+       else {
+           stmt.setString(1, "%" + value + "%"); 
        }
 
             ResultSet rs = stmt.executeQuery();
@@ -329,7 +345,7 @@ DatabaseConnection data =new DatabaseConnection();
                Data.add(new Person(ssn, name, address, startDate, birthDate, email, phoneNumber, gender, points));
             }
 
-            tableView.setItems(Data); // Set the filtered data to TableView
+            tableView.setItems(Data);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -339,6 +355,71 @@ DatabaseConnection data =new DatabaseConnection();
         loadDataFromDatabase();
         tableView.setItems(Data);
     }
+    
+    @FXML
+    private void handleSendEmail() {
+      
+        Person selectedMember = tableView.getSelectionModel().getSelectedItem();
 
+        if (selectedMember == null) {
+         
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Member Selected");
+            alert.setContentText("Please select a member to send an email.");
+            alert.showAndWait();
+        } else {
+           
+            String email = selectedMember.getUserName(); 
+
+         
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Send Email");
+            dialog.setHeaderText("Enter email subject and message");
+
+            
+            Label subjectLabel = new Label("Subject:");
+            TextField subjectField = new TextField();
+            Label messageLabel = new Label("Message:");
+            TextArea messageArea = new TextArea();
+
+           
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+            grid.add(subjectLabel, 0, 0);
+            grid.add(subjectField, 1, 0);
+            grid.add(messageLabel, 0, 1);
+            grid.add(messageArea, 1, 1);
+
+            dialog.getDialogPane().setContent(grid);
+            dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                String subject = subjectField.getText();
+                String message = messageArea.getText();
+
+                try {
+                    new SendEmail(email, subject, message);
+
+                    // Success alert
+                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                    successAlert.setTitle("Email Sent");
+                    successAlert.setHeaderText(null);
+                    successAlert.setContentText("The email has been sent to " + email + ".");
+                    successAlert.showAndWait();
+                } catch (Exception e) {
+                    // Error alert
+                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                    errorAlert.setTitle("Error");
+                    errorAlert.setHeaderText("Failed to send email");
+                    errorAlert.setContentText("There was an error sending the email. Please try again.");
+                    errorAlert.showAndWait();
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }

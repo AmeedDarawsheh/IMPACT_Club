@@ -83,7 +83,7 @@ public class ForgotPasswordController {
     }
 
     private boolean sendVerificationEmail(String toEmail, int code) {
-        final String fromEmail = "impactclubalnaqoura@gmail.com"; // Replace with your Gmail
+        final String fromEmail = ""; // Replace with your Gmail
         final String password = "ntsy xkaf luvw lqtq"; // Replace with your generated App Password
 
         Properties props = new Properties();

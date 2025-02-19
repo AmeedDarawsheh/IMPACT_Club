@@ -1,0 +1,7 @@
+/* dark-theme.css */
+.chart-series-line.default-color0 {
+    -fx-stroke:#018ABD; /* Replace with desired color */
+}
+.default-color0.chart-bar {
+    -fx-bar-fill: #018ABD; /* استبدل باللون المطلوب */
+}

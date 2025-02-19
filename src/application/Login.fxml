@@ -18,22 +18,21 @@
                   <Font name="Cambria Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#signUp" prefHeight="38.0" prefWidth="122.0" style="-fx-background-color: white; -fx-background-radius: 100 100 100 100;" text="Sign up">
+            <Button layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#contactus" prefHeight="38.0" prefWidth="133.0" style="-fx-background-color: white; -fx-background-radius: 100 100 100 100;" text="Contact us">
                <font>
                   <Font name="Cambria Bold" size="20.0" />
                </font>
             </Button>
-            <Label layoutX="75.0" layoutY="239.0" text="Don't have an account yet?" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label layoutX="44.0" layoutY="239.0" text="Got any inquiries?Drop us a message" textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="259.0" text="Enter you'r details and join with us" textAlignment="JUSTIFY" textFill="WHITE">
+            <Label layoutX="46.0" layoutY="259.0" text="and we’ll get back to you shortly." textAlignment="JUSTIFY" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="15.0" />
                </font>
             </Label>
-            <Button layoutX="245.0" layoutY="421.0" mnemonicParsing="false" onAction="#contactus" style="-fx-background-color: #212936;" text="Contact us" textFill="WHITE" />
          </children>
       </Pane>
       <Pane prefHeight="460.0" prefWidth="449.0" style="-fx-background-color: white;">

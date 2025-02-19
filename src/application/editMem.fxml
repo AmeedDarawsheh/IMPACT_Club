@@ -1,92 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="347.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditMemController">
+<AnchorPane prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditMemController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="300.0">
+      <Pane layoutX="75.0" layoutY="14.0" prefHeight="82.0" prefWidth="350.0" style="-fx-background-color: #212936; -fx-background-radius: 00 00 50 50;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Member " textAlignment="CENTER" wrappingWidth="263.173828125">
+            <Label layoutX="75.0" layoutY="17.0" text="Edit Member" textFill="WHITE">
                <font>
-                  <Font name="Bauhaus 93" size="26.0" />
+                  <Font name="System Bold" size="33.0" />
                </font>
-            </Text>
+            </Label>
          </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="30.0" prefWidth="268.0">
+      </Pane>
+      <Button fx:id="saveButton" layoutX="83.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" style="-fx-background-color: #212936; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="cancelButton" layoutX="181.0" layoutY="455.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: white;" text="Cancel">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="ssnField" layoutX="130.0" layoutY="104.0" prefHeight="25.0" prefWidth="194.0" promptText="SSN" />
+      <TextField fx:id="fullNameField" layoutX="130.0" layoutY="141.0" prefHeight="25.0" prefWidth="194.0" promptText="Full Name" />
+      <TextField fx:id="addressField" layoutX="130.0" layoutY="181.0" prefHeight="25.0" prefWidth="194.0" promptText="Address" />
+      <TextField fx:id="emailField" layoutX="130.0" layoutY="218.0" prefHeight="25.0" prefWidth="194.0" promptText="E-mail" />
+      <TextField fx:id="phoneField" layoutX="156.0" layoutY="260.0" prefHeight="25.0" prefWidth="168.0" promptText="Phone Number" />
+      <TextField fx:id="pointsField" layoutX="156.0" layoutY="297.0" prefHeight="25.0" prefWidth="168.0" promptText="Points" />
+      <DatePicker fx:id="startDateField" layoutX="156.0" layoutY="374.0" prefHeight="25.0" prefWidth="168.0" promptText="Start Date" />
+      <DatePicker fx:id="birthDateField" layoutX="156.0" layoutY="411.0" prefHeight="25.0" prefWidth="168.0" promptText="Birth Of Date" />
+      <Label layoutX="32.0" layoutY="104.0" text="SSN">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="338.0" text="Gender">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="181.0" text="Address">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="141.0" text="Full Name">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="218.0" text="E-mail">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="260.0" text="Phone Number">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="297.0" text="Points">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="374.0" text="Start Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="411.0" text="Birth Of Date">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <HBox layoutX="156.0" layoutY="338.0" prefHeight="25.0" prefWidth="168.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SSN" wrappingWidth="96.53674125671387" />
-            <TextField fx:id="ssnField" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="31.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name " />
-            <TextField fx:id="fullNameField" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="34.0" prefWidth="300.0">
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </HBox>
-      <HBox prefHeight="34.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
-            <TextField fx:id="addressField" prefHeight="26.0" prefWidth="116.0" />
-         </children>
-      </HBox>
-      <HBox prefHeight="42.0" prefWidth="300.0" />
-      <HBox prefHeight="26.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" />
-            <DatePicker fx:id="startDateField" />
-         </children>
-      </HBox>
-      <HBox prefHeight="28.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Birth of Date" />
-            <DatePicker fx:id="birthDateField" />
-         </children>
-      </HBox>
-      <HBox prefHeight="44.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gmail" />
-            <TextField fx:id="emailField" />
-         </children>
-      </HBox>
-      <HBox prefHeight="43.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" />
-            <TextField fx:id="phoneField" />
-         </children>
-      </HBox>
-      <HBox prefHeight="31.0" prefWidth="300.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Points " />
-            <TextField fx:id="pointsField" />
-         </children>
-      </HBox>
-      <HBox prefHeight="40.0" prefWidth="347.0">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" />
             <RadioButton fx:id="maleRadio" mnemonicParsing="false" text="Male" />
-            <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Female " />
-         </children>
-      </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Button fx:id="saveButton" mnemonicParsing="false" text="Save" />
-            <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
+            <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Female" />
          </children>
       </HBox>
    </children>
-</VBox>
+</AnchorPane>

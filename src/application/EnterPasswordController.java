@@ -12,9 +12,9 @@ public class EnterPasswordController {
     @FXML
     private PasswordField confirmPasswordField;
 
-    private String userEmail; // The email of the user whose password needs to be updated
+    private String userEmail; 
 
-    // Setter to receive the user email
+  
     public void setUserEmail(String email) {
         this.userEmail = email;
     }
@@ -34,7 +34,7 @@ public class EnterPasswordController {
             return;
         }
 
-        // Update the password in the database
+       
         DatabaseConnection databaseConnection = new DatabaseConnection();
         String query = "UPDATE \"IMPACT Club\".person SET password = ? WHERE user_name = ?";
 
