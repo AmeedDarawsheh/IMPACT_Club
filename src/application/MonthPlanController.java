@@ -54,7 +54,7 @@ public class MonthPlanController {
 
         String query = "SELECT task_id,task_name, completed FROM \"IMPACT Club\".tasks " +
                        "JOIN \"IMPACT Club\".monthlyplan ON tasks.monthlyplan_id = monthlyplan.monthlyplan_id " +
-                       "WHERE monthlyplan.yearplan_id = ? AND monthlyplan.month = ?";
+                       "WHERE monthlyplan.planid = ? AND monthlyplan.month = ?";
 
         try (PreparedStatement statement = databaseConnection.prepareStatement(query)) {
             statement.setInt(1, yearlyplanId);
@@ -134,7 +134,7 @@ public class MonthPlanController {
             if (!newTaskName.isEmpty()) {
                 String insertQuery = "INSERT INTO \"IMPACT Club\".tasks (task_name, completed, monthlyplan_id) " +
                                      "VALUES (?, false, (SELECT monthlyplan_id FROM \"IMPACT Club\".monthlyplan " +
-                                     "WHERE yearplan_id = ? AND month = ?)) RETURNING task_id";
+                                     "WHERE planid = ? AND month = ?)) RETURNING task_id";
 
                 try (PreparedStatement statement = databaseConnection.prepareStatement(insertQuery)) {
                     statement.setString(1, newTaskName);

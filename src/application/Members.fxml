@@ -24,9 +24,9 @@
                   <TableColumn fx:id="memberSinceCol" prefWidth="156.79998779296875" resizable="false" text="Member Since" />
                   <TableColumn fx:id="dobCol" prefWidth="111.20001220703125" resizable="false" text="Date of Birth" />
                 <TableColumn fx:id="emailCol" minWidth="0.0" prefWidth="104.79998779296875" resizable="false" text="gmail " />
-                  <TableColumn fx:id="phoneCol" prefWidth="116.79998779296875" text="Phone number" />
-                  <TableColumn fx:id="pointsCol" prefWidth="46.39990234375" text="points" />
-                  <TableColumn fx:id="genderCol" prefWidth="53.60003662109375" text="gender " />
+                  <TableColumn fx:id="phoneCol" prefWidth="88.800048828125" text="Phone number" />
+                  <TableColumn fx:id="pointsCol" prefWidth="83.20001220703125" text="Points" />
+                  <TableColumn fx:id="genderCol" prefWidth="46.40008544921875" text="gender " />
                   <TableColumn fx:id="actionCol" prefWidth="148.0" text="Action" />
               </columns>
             </TableView>
@@ -37,7 +37,7 @@
                </font>
             </Label>
             <TextField fx:id="searchField" layoutX="414.0" layoutY="21.0" prefHeight="26.0" prefWidth="211.0" promptText="Enter the value " />
-            <Button layoutX="1013.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Send mail " textFill="WHITE">
+            <Button layoutX="1013.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSendEmail" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Send mail " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="9.0" />
                </font>
@@ -52,28 +52,15 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="587.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="26.0" prefWidth="38.0" />
-            <ImageView fitHeight="26.0" fitWidth="23.0" layoutX="595.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/loupe.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="877.0" layoutY="11.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Edit" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="9.0" />
-               </font>
+            <Button layoutX="587.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleSearch" prefHeight="26.0" prefWidth="38.0">
                <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="26.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@icons/pen.png" />
+                        <Image url="@icons/loupe.png" />
                      </image>
-                     <effect>
-                        <Glow level="0.35" />
-                     </effect>
                   </ImageView>
-               </graphic>
-            </Button>
-            <Button layoutX="724.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Refresh" textFill="WHITE">
+               </graphic></Button>
+            <Button layoutX="879.0" layoutY="10.0" mnemonicParsing="false" onAction="#refresh" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #212936; -fx-background-radius: 50;" text="Refresh" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="9.0" />
                </font>

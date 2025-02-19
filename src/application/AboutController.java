@@ -54,14 +54,14 @@ public class AboutController {
         });
 
         goalsButton.setOnMouseExited(event -> {
-            goalsButton.setStyle("-fx-background-color: #6c757d;"); // Revert background color
+            goalsButton.setStyle("-fx-background-color: #6c757d;"); 
         });
 
-        // Adding click event to move label and display data
+        
         goalsButton.setOnAction(event -> {
-            // Move label to the right
+            
             moveLabel(objectivesLabel);
-            // Display goals from the database
+           
             displayGoalsFromDatabase();
         });
         descriptionButton.setOnMouseEntered(event -> {

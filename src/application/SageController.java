@@ -1,6 +1,9 @@
 package application;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -19,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 public class SageController implements Initializable {
+	DatabaseConnection data=new DatabaseConnection();
 	@FXML
 	private Button overviewB,logoutB,membersB,projectsB,plansB,sessionB,settingsBtn;
 	@FXML
@@ -26,19 +30,47 @@ public class SageController implements Initializable {
 	Stage stage;		
 	@FXML
 	private StackPane stackPane;
+	@FXML 
+	Label welcomeLabel ;
+	@FXML 
+	private Label leaderName ;
 	@FXML
 	Label title;
 	@FXML
 	Button addBtn;
 	private String currentPage;
+    private void loadLeaderFirstName() {
+        String query = "SELECT p.first_name FROM \"IMPACT Club\".person p JOIN \"IMPACT Club\".leader l ON p.ssn = l.ssn WHERE l.leaderid = ?";
+
+        try (Connection conn = data.getConnection();  
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1,loginController.getLoggedInLeaderId());
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String firstName = rs.getString("first_name");
+                welcomeLabel.setText("Welcome, " + firstName);
+            } else {
+                welcomeLabel.setText("Welcome, Leader");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            welcomeLabel.setText("Welcome, Leader");
+        }
+    }
+
 	@Override
 	public void initialize(URL locatian,ResourceBundle resources) {	
-		try {
+		try {loadLeaderFirstName();
 			Parent fxml = FXMLLoader.load(getClass().getResource("Overview.fxml"));
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);
 			title.setText("OverView");
 			addBtn.setVisible(false);
+			
 		}catch(IOException ex ) {
 		//	Logger.getLogger(SageController.class.getName()).log(Level.SEVERE,null, ex);
 		}	
@@ -60,7 +92,7 @@ public class SageController implements Initializable {
 	    Parent fxml = loader.load();
 	    MembersController memberController = loader.getController();
 	    
-	    System.out.println("Calling setl on MembersController...");
+	 
 	    memberController.initialize(); // Load data
 
 	    stackPane.getChildren().clear();
@@ -80,9 +112,23 @@ public class SageController implements Initializable {
 		Parent fxml = FXMLLoader.load(getClass().getResource("AdminSettings.fxml"));
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
-		title.setText("settings");
+		title.setText("Setting");
 		addBtn.setVisible(false);
 	}	
+	public void leaders(ActionEvent e) throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Leader.fxml"));
+		LeaderController controller = new LeaderController(loginController.getLoggedInLeaderId()); 
+		//loader.setController(controller);
+
+		Parent fxml = loader.load();
+		stackPane.getChildren().clear(); 
+		stackPane.getChildren().add(fxml);
+
+		title.setText("Leaders");
+		addBtn.setVisible(false);
+
+		
+	}
 	public void sessionB(ActionEvent e ) throws IOException {	
 		Parent fxml = FXMLLoader.load(getClass().getResource("AdminSessionPage.fxml"));
 		stackPane.getChildren().removeAll();
@@ -98,7 +144,7 @@ public class SageController implements Initializable {
 		stackPane.getChildren().removeAll();
 		stackPane.getChildren().setAll(fxml);
 		title.setText("Plans");
-		addBtn.setVisible(true);
+		addBtn.setVisible(false);
 		addBtn.setText("Add Plan");
 	}
 	public void projectsB(ActionEvent e ) throws IOException {	
@@ -138,7 +184,7 @@ public class SageController implements Initializable {
 	                openAddMemberPage();
 	                break;
 	            case "Projects":
-	              //  openAddProjectPage();
+	                openAddProjectPage();
 	                break;
 	            
 	            
@@ -155,12 +201,12 @@ public class SageController implements Initializable {
 	        addMemberStage.show();
 	    }
 
-	   /* private void openAddProjectPage() throws IOException {
-	        Parent fxml = FXMLLoader.load(getClass().getResource("AddProject.fxml"));
+	    private void openAddProjectPage() throws IOException {
+	        Parent fxml = FXMLLoader.load(getClass().getResource("addProject.fxml"));
 	        Stage addProjectStage = new Stage();
 	        addProjectStage.setTitle("Add Project");
 	        addProjectStage.setScene(new Scene(fxml));
 	        addProjectStage.show();
-	    }*/
+	    }
 
 }

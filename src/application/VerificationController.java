@@ -17,7 +17,7 @@ public class VerificationController {
     private int verificationCode;
     private String userEmail;
 
-    // Setter to receive the verification code
+   
     public void setVerificationCode(int code,String email) {
         this.verificationCode = code;
         this.userEmail = email;
@@ -38,7 +38,7 @@ public class VerificationController {
             if (enteredCodeInt == verificationCode) {
                 showAlert("Success", "Verification successful!", Alert.AlertType.INFORMATION);
                 openEnterPasswordWindow(event);
-                // Proceed with the next step (e.g., reset password)
+              
             } else {
                 showAlert("Error", "Incorrect verification code. Please try again.", Alert.AlertType.ERROR);
             }
@@ -51,7 +51,6 @@ public class VerificationController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("enterPassword.fxml"));
             Parent root = loader.load();
 
-            // Pass the user email to the EnterPasswordController
             EnterPasswordController enterPasswordController = loader.getController();
             enterPasswordController.setUserEmail(userEmail);
 
@@ -60,7 +59,7 @@ public class VerificationController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Close the current verification window
+        
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (Exception e) {

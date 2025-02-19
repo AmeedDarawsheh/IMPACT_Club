@@ -51,7 +51,7 @@ public class UserPageProjectController implements Initializable {
     
 	@FXML
 	public void addProject(ActionEvent e) throws IOException {	
-		// dialog have many of projects from plan  and member select one	
+			
 		Parent root = FXMLLoader.load(getClass().getResource("UserAddProject.fxml"));
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
@@ -61,7 +61,7 @@ public class UserPageProjectController implements Initializable {
 	@FXML
 	public void sendMailToLeaders(ActionEvent event) {
 	    
-	        // Show input dialog to enter message content
+	     
 	        TextInputDialog inputDialog = new TextInputDialog();
 	        inputDialog.setTitle("Send Message");
 	        inputDialog.setHeaderText("Enter the message content to send to " + "IMPACT Club Gmail ");
@@ -70,8 +70,8 @@ public class UserPageProjectController implements Initializable {
 	        Optional<String> result = inputDialog.showAndWait();
 	        result.ifPresent(messageContent -> {
 	            if (!messageContent.isEmpty()) {
-	                // Create UserMessageSend object with the required details
-	                UserMessageSend message = new UserMessageSend("impactclubalnaqoura@gmail.com", getUsernameByMemberId(loginController.getLoggedInMemberId()), messageContent,"Contact with Leader in IMPACT Club");
+	               
+	                UserMessageSend message = new UserMessageSend("", getUsernameByMemberId(loginController.getLoggedInMemberId()), messageContent,"Contact with Leader in IMPACT Club");
 	                boolean success = message.sendEmail();
 
 	                if (success) {
@@ -154,7 +154,6 @@ public class UserPageProjectController implements Initializable {
 		stage.setScene(scene);
 		stage.show();
 		
-		// dialog send massage by email to all members in selected project   like : hey friends deadline soon 
 		
 	}
 	
@@ -246,8 +245,8 @@ public class UserPageProjectController implements Initializable {
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setInt(1, loginController.getLoggedInMemberId());  // Filter by logged-in member ID
-            stmt.setInt(2, projectId);         // Filter by entered Project ID
+            stmt.setInt(1, loginController.getLoggedInMemberId());
+            stmt.setInt(2, projectId);       
 
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {

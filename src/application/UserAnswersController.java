@@ -69,7 +69,7 @@ public class UserAnswersController {
     	            }
     	        } catch (SQLException e) {
     	            e.printStackTrace();
-    	            // Show error alert
+    	          
     	            Alert alert = new Alert(Alert.AlertType.ERROR);
     	            alert.setTitle("Database Error");
     	            alert.setHeaderText(null);

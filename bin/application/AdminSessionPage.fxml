@@ -114,6 +114,19 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
             </TableView>
+            <TableView fx:id="sessionMemberTable" layoutX="-4.0" layoutY="-1.0" prefHeight="666.0" prefWidth="834.0" style="-fx-background-radius: 20;">
+               <columns>
+                  <TableColumn fx:id="sessionIdCol1" prefWidth="71.20000839233398" style="-fx-background-color: white;" text="Session ID" />
+                  <TableColumn fx:id="memberIdCol" editable="false" prefWidth="82.39999389648438" style="-fx-background-color: white;" text="Member ID" />
+                  <TableColumn fx:id="memberNameCol" prefWidth="139.1999969482422" style="-fx-background-color: white;" text="Member Name" />
+                  <TableColumn fx:id="answersCol" editable="false" prefWidth="110.40003967285156" style="-fx-background-color: white;" text="Answers" />
+                  <TableColumn fx:id="feedbackCol" editable="false" minWidth="0.0" prefWidth="181.5999755859375" style="-fx-background-color: white;" text="Feedback" />
+                  <TableColumn fx:id="attendanceCol" prefWidth="218.39996337890625" style="-fx-background-color: white;" text="Attendance" />
+               </columns>
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </TableView>
          </children>
       </Pane>
    </children>

@@ -17,7 +17,7 @@ public class UserProjectSendMassageController {
 	
 		String feed = text.getText();
 		
-		// sent text by user Email to all members in same project
+		
 		
 	}
 	@FXML

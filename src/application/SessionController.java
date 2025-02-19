@@ -37,6 +37,7 @@ public class SessionController implements Initializable {
     @FXML private Button searchBtn, saveBtn, editBtn, deleteBtn, addBtn;
     @FXML private TableView<Session> sessionTable;
     @FXML private TableView<SessionLeader> sessionLeaderTable;
+    @FXML private TableView<SessionMember> sessionMemberTable;
     @FXML private ToggleButton switchBtn;
     @FXML private TextField IN, F1, F2,F3,F4;
     @FXML private DatePicker date;
@@ -50,18 +51,26 @@ public class SessionController implements Initializable {
     @FXML private TableColumn<SessionLeader, String> roleColumn;
     @FXML private TableColumn<SessionLeader, String> leaderNotesColumn;
     @FXML private TableColumn<SessionLeader, String> attendanceColumn;
+    @FXML private TableColumn<SessionMember, Integer> sessionIdCol1;
+    @FXML private TableColumn<SessionMember, Integer> memberIdCol;
+    @FXML private TableColumn<SessionMember, String> memberNameCol;
+    @FXML private TableColumn<SessionMember, String> answersCol;
+    @FXML private TableColumn<SessionMember, String> attendanceCol;
+    @FXML private TableColumn<SessionMember, String> feedbackCol;
 
-    private Boolean isLeader = false;
+
+    private Boolean isLeader = false,isMember=false,isSession=true;
     private String ID;
     
     private ObservableList<Session> sessionData = FXCollections.observableArrayList();
     private ObservableList<SessionLeader> leaderData = FXCollections.observableArrayList();
-
+    ObservableList<SessionMember> sessionMembers = FXCollections.observableArrayList();
     DatabaseConnection database = new DatabaseConnection();
     Connection connection = database.getConnection();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+    	sessionMemberTable.setVisible(false);
         sessionTable.setVisible(true);
         sessionLeaderTable.setVisible(false);
         saveBtn.setDisable(true);
@@ -80,6 +89,7 @@ public class SessionController implements Initializable {
 
         setupSessionTable();
         setupLeaderTable();
+        setupMemberTable();
         loadSessionData();
     }
 
@@ -116,7 +126,24 @@ public class SessionController implements Initializable {
 
        
     }
+    private void setupMemberTable() {
+   	 sessionIdCol1.setCellValueFactory(new PropertyValueFactory<>("sessionId"));
+       
+       memberIdCol.setCellValueFactory(new PropertyValueFactory<>("memberId"));
 
+       
+       answersCol.setCellValueFactory(new PropertyValueFactory<>("answers"));
+
+       
+       feedbackCol.setCellValueFactory(new PropertyValueFactory<>("feedback"));
+
+       
+       attendanceCol.setCellValueFactory(new PropertyValueFactory<>("attendance"));
+       memberNameCol.setCellValueFactory(new PropertyValueFactory<>("memberName"));
+       
+
+      
+   }
     private void loadSessionData() {
         sessionData.clear();
         String query = "SELECT * FROM \"IMPACT Club\".session ORDER BY sessionid ASC";
@@ -144,29 +171,87 @@ public class SessionController implements Initializable {
         }
         sessionLeaderTable.setItems(leaderData);
     }
+    
+    private void loadMemberData() {
+       sessionMembers.clear();
 
+        String query = "SELECT s.sessionid, m.memberid, p.first_name || ' ' || p.last_name AS member_name, " +
+                       "sm.answers, sm.feedback, sm.attendance " +
+                       "FROM \"IMPACT Club\".sessionmember sm " +
+                       "JOIN \"IMPACT Club\".member m ON sm.memberid = m.memberid " +
+                       "JOIN \"IMPACT Club\".person p ON m.ssn = p.ssn " +
+                       "JOIN \"IMPACT Club\".session s ON sm.sessionid = s.sessionid";
+
+        try (
+             PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                int sessionId = rs.getInt("sessionid");
+                int memberId = rs.getInt("memberid");
+                String memberName = rs.getString("member_name");
+                String answers = rs.getString("answers");
+                String feedback = rs.getString("feedback");
+                String attendance = rs.getString("attendance");
+
+                sessionMembers.add(new SessionMember(sessionId, memberId, memberName, answers, feedback, attendance));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        sessionMemberTable.setItems(sessionMembers);
+    }
     @FXML
     public void switchbtn(ActionEvent event) {
-        if (switchBtn.isSelected()) {
+        if (isSession) {
             sessionTable.setVisible(false);
             sessionLeaderTable.setVisible(true);
+            sessionMemberTable.setVisible(false);
             nameTable.setText("Leader");
             isLeader = true;
+            isMember=false;
+            isSession=false;
             date.setVisible(false);
             F1.setPromptText("Role");
             F2.setPromptText("Attendance");
+            F3.setPromptText("Notes");
             F3.setVisible(true);
             clearFields();
             loadLeaderData();
-        } else {
-            sessionTable.setVisible(true);
+        } else if (isLeader){
+            sessionMemberTable.setVisible(true);
             sessionLeaderTable.setVisible(false);
+            sessionTable.setVisible(false);
+            nameTable.setText("Mamber");
+            isLeader = false;
+            isMember=true;
+            isSession=false;
+            clearFields();
+            date.setVisible(true);
+            date.setVisible(false);
+            F1.setPromptText("Answer");
+            F2.setPromptText("Attendance");
+            F3.setVisible(true);
+            F3.setPromptText("Feedback");
+            F4.setVisible(false);
+            F4.setDisable(false);
+            loadMemberData();
+        }
+        else if(isMember) {
+        	isLeader = false;
+            isMember=false;
+            isSession=true;
+        	sessionTable.setVisible(true);
+            sessionLeaderTable.setVisible(false);
+            sessionMemberTable.setVisible(false);
             nameTable.setText("Session");
             isLeader = false;
             clearFields();
             date.setVisible(true);
             F1.setPromptText("Topic");
             F2.setPromptText("Time");
+            F3.setVisible(false);
             F4.setVisible(false);
             F4.setDisable(false);
             loadSessionData();
@@ -191,7 +276,7 @@ public class SessionController implements Initializable {
                 for (SessionLeader leader : leaderData) {
                     if (leader.getLeaderId() == id) {
                         filteredData.add(leader);
-                        break;  
+                          
                     }
                 }
                 if (filteredData.isEmpty()) {
@@ -199,6 +284,21 @@ public class SessionController implements Initializable {
                     alert.showAndWait();
                 } else {
                     sessionLeaderTable.setItems(filteredData);
+                }
+            }  if (isMember) {
+              
+                ObservableList<SessionMember> filteredData = FXCollections.observableArrayList();
+                for (SessionMember Member : sessionMembers) {
+                    if (Member.getMemberId() == id) {
+                        filteredData.add(Member);
+                          
+                    }
+                }
+                if (filteredData.isEmpty()) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "No leader found with ID: " + id, ButtonType.OK);
+                    alert.showAndWait();
+                } else {
+                    sessionMemberTable.setItems(filteredData);
                 }
             } else {
                 // Search in the sessionTable
@@ -224,14 +324,14 @@ public class SessionController implements Initializable {
     }
     @FXML
     public void addbtn(ActionEvent event) {
-        saveBtn.setDisable(false);
+        saveBtn.setDisable(true);
         F2.setDisable(false);
         F1.setDisable(false);
         date.setDisable(false);
         date.setVisible(true);
         F4.setVisible(false);
         F3.setVisible(false);
-        if (!isLeader) {  
+        if (isSession) {  
             try {
               
                 String topic = F1.getText().trim();
@@ -269,7 +369,7 @@ public class SessionController implements Initializable {
                 showAlert("An error occurred while adding the entry.");
             }
         }
-        else {    saveBtn.setDisable(false);
+        else if(isLeader) {    saveBtn.setDisable(true);
         F2.setDisable(false);
         F1.setDisable(false);
         IN.setDisable(false);
@@ -277,38 +377,40 @@ public class SessionController implements Initializable {
         F3.setVisible(true);
         F3.setDisable(false);
         F4.setDisable(false);
+        
         try {
-            // Retrieve values from input fields
+          
             int leaderId;
             try {
                 leaderId = Integer.parseInt(IN.getText().trim());
             } catch (NumberFormatException e) {
                 showAlert("Please enter a valid numeric Leader ID.");
                 return;
-            }
+            }   
             String role = F1.getText().trim();
             String attendance = F2.getText().trim();
-            String notes = F3.getText().trim(); // Assuming you use a TextField for Notes
+            String notes = F3.getText().trim(); 
             String id=IN.getText().trim();
             String ids=F4.getText().trim();
-            // Validate inputs
+         
             if (ids.isEmpty()||id.isEmpty()||role.isEmpty() || attendance.isEmpty() || notes.isEmpty()) {
                 showAlert("Please fill all fields for the leader entry.");
                 return;
             }
-            // Ensure attendance matches allowed values
+            
             if (!attendance.equals("Present") && !attendance.equals("Absent")) {
                 showAlert("Attendance must be either 'Present' or 'Absent'.");
                 return;
             }
             PGobject attendanceObj = new PGobject();
-            attendanceObj.setType("\"IMPACT Club\".isattendence"); // Set type as custom enum
-            attendanceObj.setValue(attendance); // Set the value as 'Present' or 'Absent'
+            attendanceObj.setType("\"IMPACT Club\".isattendence"); 
+            attendanceObj.setValue(attendance); 
             leaderId = Integer.parseInt(id);
            int  sessionId = Integer.parseInt(ids);
 
-            // SQL Insert for leader
-            String query = "INSERT INTO \"IMPACT Club\".sessionleader (sessionid,leaderid, role, attendance, leadernotes) VALUES (?,?, ?, ?, ?)";
+           
+            String query = "INSERT INTO \"IMPACT Club\".sessionleader (sessionid, leaderid, role, attendance, leadernotes) " +
+                    "VALUES (?, ?, ?, ?, ?) ON CONFLICT (sessionid, leaderid) DO NOTHING";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
             	ps.setInt(1, sessionId);
                 ps.setInt(2, leaderId);
@@ -317,9 +419,10 @@ public class SessionController implements Initializable {
                 ps.setString(5, notes);
 
                 int result = ps.executeUpdate();
+              
                 if (result > 0) {
                     showAlert("Leader entry added successfully.");
-                    loadLeaderData(); // Reload leader table data
+                    loadLeaderData();
                 }
             }
         } catch (SQLException e) {
@@ -327,18 +430,88 @@ public class SessionController implements Initializable {
             showAlert("An error occurred while adding the leader entry.");
         }
     }
+        else if(isMember) {
+            saveBtn.setDisable(true);
+            F2.setDisable(false);
+            F1.setDisable(false);
+            IN.setDisable(false);
+            F4.setVisible(true);
+            F3.setVisible(true);
+            F3.setDisable(false);
+            F4.setDisable(false);
+date.setVisible(false);
+            try {
+              
+                int memberId;
+                try {
+                    memberId = Integer.parseInt(IN.getText().trim());
+                } catch (NumberFormatException e) {
+                    showAlert("Please enter a valid numeric Member ID.");
+                    return;
+                }
+                String answers = F1.getText().trim();
+                String attendance = F2.getText().trim();
+                String feedback = F3.getText().trim(); 
+                String id = IN.getText().trim();
+                String sessionIdStr = F4.getText().trim();
 
+                
+                if (sessionIdStr.isEmpty() || id.isEmpty() || attendance.isEmpty()  ) {
+                    showAlert("Please fill all fields for the member entry.");
+                    return;
+                }
+
+                
+                if (!attendance.equals("Present") && !attendance.equals("Absent")) {
+                    showAlert("Attendance must be either 'Present' or 'Absent'.");
+                    return;
+                }
+
+                PGobject attendanceObj = new PGobject();
+                attendanceObj.setType("\"IMPACT Club\".isattendence");
+                attendanceObj.setValue(attendance); 
+
+                memberId = Integer.parseInt(id);
+                int sessionId = Integer.parseInt(sessionIdStr);
+
+             
+                String query = "INSERT INTO \"IMPACT Club\".sessionmember (sessionid, memberid, attendance, answers, feedback) VALUES (?, ?, ?, ?, ?)";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, sessionId);
+                    ps.setInt(2, memberId);
+                    ps.setObject(3, attendanceObj);
+                    ps.setString(4, answers);
+                    ps.setString(5, feedback);
+
+                    int result = ps.executeUpdate();
+                    if (result > 0) {
+                        showAlert("Member entry added successfully.");
+                        loadMemberData(); 
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                showAlert("An error occurred while adding the member entry.");
+            }
+        }
+        F1.clear();
+        F2.clear();
+        F3.clear();
+        F4.clear();
+        IN.clear();
+       
+        }
     
-    }
+    
     @FXML
     public void editbtn(ActionEvent event) {
-        // Enable the save button and the editable fields
+       
         saveBtn.setDisable(false);
         F2.setDisable(false);
         F1.setDisable(false);	
          
         if (isLeader) {
-            // Hide the date picker for leader entries
+          
         	F4.setVisible(true);
         	F4.setDisable(false);
             date.setVisible(false);
@@ -346,9 +519,9 @@ public class SessionController implements Initializable {
            
             SessionLeader selectedLeader = sessionLeaderTable.getSelectionModel().getSelectedItem();
             if (selectedLeader != null) {
-                IN.setText(String.valueOf(selectedLeader.getLeaderId())); // Set the Leader ID
-                F1.setText(selectedLeader.getRole()); // Set the Role
-                F2.setText(selectedLeader.getAttendance()); // Set the Attendance
+                IN.setText(String.valueOf(selectedLeader.getLeaderId()));
+                F1.setText(selectedLeader.getRole()); 
+                F2.setText(selectedLeader.getAttendance()); 
                 F3.setText(selectedLeader.getLeaderNotes());
                 F4.setText(String.valueOf(selectedLeader.getSessionId()));
             
@@ -356,8 +529,8 @@ public class SessionController implements Initializable {
                 showAlert("Please select a leader entry to edit.");
             }
 
-        } else {
-            // Show the date picker for session entries
+        } else if(isSession) {
+          
             date.setVisible(true);
             date.setDisable(false);
 
@@ -370,6 +543,26 @@ public class SessionController implements Initializable {
                 date.setValue(selectedSession.getSessionDate()); 
             } else {
                 showAlert("Please select a session entry to edit.");
+            }
+        }
+        else if (isMember) {
+         
+            F1.setDisable(false);  
+            F2.setDisable(false);
+            F3.setDisable(false);  
+            F4.setVisible(true);
+            saveBtn.setDisable(false);
+
+           
+            SessionMember selectedMember = sessionMemberTable.getSelectionModel().getSelectedItem();
+            if (selectedMember != null) {
+                IN.setText(String.valueOf(selectedMember.getMemberId())); 
+                F1.setText(selectedMember.getAnswers());                  
+                F2.setText(selectedMember.getAttendance());              
+                F3.setText(selectedMember.getFeedback());                
+                F4.setText(String.valueOf(selectedMember.getSessionId())); 
+            } else {
+                showAlert("Please select a member entry to edit.");
             }
         }
     }
@@ -404,7 +597,7 @@ public class SessionController implements Initializable {
             }
 
            
-            String query = "UPDATE \"IMPACT Club\".sessionleader SET role = ?, attendance = ?, leadernotes = ?,sessionid=? WHERE leaderid = ? ";
+            String query = "UPDATE \"IMPACT Club\".sessionleader SET role = ?, attendance = ?, leadernotes = ? WHERE leaderid = ? and sessionid=?";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setString(1, role);
                 
@@ -414,8 +607,8 @@ public class SessionController implements Initializable {
                 ps.setObject(2, attendanceObj);
 
                 ps.setString(3, notes);
-                ps.setInt(5, leaderId);
-                ps.setInt(4, sessionId);
+                ps.setInt(4, leaderId);
+                ps.setInt(5, sessionId);
                 
                 int result = ps.executeUpdate();
                 if (result > 0) {
@@ -429,8 +622,8 @@ public class SessionController implements Initializable {
                 showAlert("An error occurred while updating the leader entry.");
             }
 
-        } else {
-            // Save changes for a session entry
+        } else if (isSession) {
+          
             int sessionId;
             try {
                 sessionId = Integer.parseInt(IN.getText().trim());
@@ -475,7 +668,54 @@ public class SessionController implements Initializable {
                 showAlert("An error occurred while updating the session entry.");
             }
         }
+        else if (isMember) {
+            try {
+                int memberId = Integer.parseInt(IN.getText().trim());
+                int sessionId = Integer.parseInt(F4.getText().trim()); 
+                String answers = F1.getText().trim();
+                String attendance = F2.getText().trim();
+                String feedback = F3.getText().trim();
 
+             
+                if (answers.isEmpty() || attendance.isEmpty() || feedback.isEmpty()) {
+                    showAlert("Please fill all fields for the member entry.");
+                    return;
+                }
+
+             
+                if (!attendance.equals("Present") && !attendance.equals("Absent")) {
+                    showAlert("Attendance must be either 'Present' or 'Absent'.");
+                    return;
+                }
+
+                PGobject attendanceObj = new PGobject();
+                attendanceObj.setType("\"IMPACT Club\".isattendence"); 
+                attendanceObj.setValue(attendance);
+
+               
+                String query = "UPDATE \"IMPACT Club\".sessionmember " +
+                               "SET answers = ?, attendance = ?, feedback = ? " +
+                               "WHERE memberid = ? AND sessionid = ?";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setString(1, answers);
+                    ps.setObject(2, attendanceObj);
+                    ps.setString(3, feedback);
+                    ps.setInt(4, memberId);
+                    ps.setInt(5, sessionId); 
+
+                    int result = ps.executeUpdate();
+                    if (result > 0) {
+                        showAlert("Member entry updated successfully.");
+                        loadMemberData(); 
+                    } else {
+                        showAlert("Update failed. No changes were made.");
+                    }
+                }
+            } catch (SQLException | NumberFormatException e) {
+                e.printStackTrace();
+                showAlert("An error occurred while updating the member entry.");
+            }
+        }
         
         clearFields();
     }
@@ -531,7 +771,7 @@ public class SessionController implements Initializable {
                 showAlert("Please select a leader entry to edit.");
             }
            
-        } else {
+        } else if(isSession){
            
             date.setVisible(true);
             date.setDisable(false);
@@ -553,7 +793,7 @@ public class SessionController implements Initializable {
                     int result = ps.executeUpdate();
                     if (result > 0) {
                         showAlert("Session entry deleted successfully.");
-                        loadSessionData(); // Reload session table data
+                        loadSessionData();
                     } else {
                         showAlert("Session ID not found or no changes made.");
                     }
@@ -565,8 +805,39 @@ public class SessionController implements Initializable {
                 showAlert("Please select a session entry to delete.");
             }
         }
-        
-    }
+        else if (isMember) {
+          
+            F4.setVisible(true);
+            F4.setDisable(false);
+            date.setVisible(false);
+            F3.setDisable(false);
+
+           
+            SessionMember selectedMember = sessionMemberTable.getSelectionModel().getSelectedItem();
+            if (selectedMember != null) {
+                IN.setText(String.valueOf(selectedMember.getMemberId()));
+                F4.setText(String.valueOf(selectedMember.getSessionId()));
+
+                String query = "DELETE FROM \"IMPACT Club\".sessionmember WHERE sessionid = ? AND memberid = ?";
+                try (PreparedStatement ps = connection.prepareStatement(query)) {
+                    ps.setInt(1, selectedMember.getSessionId());
+                    ps.setInt(2, selectedMember.getMemberId());
+
+                    int result = ps.executeUpdate();
+                    if (result > 0) {
+                        showAlert("Member entry deleted successfully.");
+                        loadMemberData(); 
+                    } else {
+                        showAlert("Member ID not found or no changes made.");
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    showAlert("An error occurred while deleting the member entry.");
+                }
+            } else {
+                showAlert("Please select a member entry to edit.");
+            }
+        }    }
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
         alert.showAndWait();

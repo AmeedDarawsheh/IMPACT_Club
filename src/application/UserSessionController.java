@@ -3,9 +3,7 @@ import javafx.collections.FXCollections;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -112,7 +110,7 @@ private void loadSessionData() {
         int memberId = loginController.getLoggedInMemberId();
         
         
-        stmt.setInt(1, memberId);  // Filter by logged-in member ID
+        stmt.setInt(1, memberId);  
         ResultSet rs = stmt.executeQuery();
        
 
@@ -131,7 +129,7 @@ private void loadSessionData() {
         
         
     } catch (SQLException e) {
-        e.printStackTrace();
+       // e.printStackTrace();
     }
 }
 @FXML
@@ -139,21 +137,20 @@ private void handleReportSessionButtonClick() {
     try {
        DatabaseConnection data =new DatabaseConnection();
        Connection nn=data.getConnection();
-       InputStream input =new FileInputStream("D:\\Documents\\GitHub\\IMPACT_Club\\src\\IMPACT.jrxml");
+       InputStream input =new FileInputStream("C:\\Users\\User\\JaspersoftWorkspace\\Emp\\Leaf_Violet.jrxml");
        JasperDesign jd =JRXmlLoader.load(input);
        JasperReport jr =JasperCompileManager.compileReport(jd);
        JasperPrint jp=JasperFillManager.fillReport(jr, null,nn);
        OutputStream os =new FileOutputStream(new File ("rep.pdf"));
-       //JasperExportManager.exportReportToPdfStream(jp,os);
-       //JFrame frame =new JFrame ();
-       //JasperViewer viewer = new JasperViewer(jp, false);
-      // frame.getContentPane().add(viewer);
-       //frame.pack();
-       //frame.setVisible(true);
+      JasperExportManager.exportReportToPdfStream(jp,os);
+       /*JFrame frame =new JFrame ("report");
+       JasperViewer viewer = new JasperViewer(jp, false);
+      frame.getContentPane().add(viewer);
+       frame.pack();
+      frame.setVisible(true);*/
        
     } catch (Exception e) {
-        System.err.println("Error displaying report: " + e.getMessage());
-        e.printStackTrace();
+        //System.err.println("Error displaying report: " + e.getMessage());
     }
 }
 
@@ -162,14 +159,13 @@ private void handleReportSessionButtonClick() {
 public void feedBack(ActionEvent e) throws IOException {
 	
 	
-	 if (selectedSession != null) {  // Ensure a project is selected
+	 if (selectedSession != null) {  
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("UserFeedBack.fxml"));
 	        Parent root = loader.load();
 
-	        // Get the controller of the feedback scene
+	        
 	        UserFeedBackController feedbackController = loader.getController();
-	        feedbackController.setFeedback(loginController.getLoggedInMemberId(),selectedSession.getSessionId(),false);  // Pass the selected project
-
+	        feedbackController.setFeedback(loginController.getLoggedInMemberId(),selectedSession.getSessionId(),false);  
 	        Stage stage = new Stage();
 	        stage.setScene(new Scene(root));
 	        stage.show();
@@ -188,13 +184,13 @@ public void feedBack(ActionEvent e) throws IOException {
 public void answers(ActionEvent e) throws IOException {
 	
 	
-	 if (selectedSession != null) {  // Ensure a project is selected
+	 if (selectedSession != null) {  
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("AnswersUserSession.fxml"));
 	        Parent root = loader.load();
 
-	        // Get the controller of the feedback scene
+	   
 	        UserAnswersController answerController = loader.getController();
-	        answerController.setAnswers(loginController.getLoggedInMemberId(),selectedSession.getSessionId());  // Pass the selected project
+	        answerController.setAnswers(loginController.getLoggedInMemberId(),selectedSession.getSessionId());  
 
 	        Stage stage = new Stage();
 	        stage.setScene(new Scene(root));
@@ -240,8 +236,8 @@ private ObservableList<SessionUser> getSessionById(int sessionId) {
     try (Connection conn = DatabaseConnection.getConnection();
          PreparedStatement stmt = conn.prepareStatement(query)) {
 
-        stmt.setInt(1, loginController.getLoggedInMemberId());  // Filter by logged-in member ID
-        stmt.setInt(2, sessionId);  // Filter by entered Session ID
+        stmt.setInt(1, loginController.getLoggedInMemberId());  
+        stmt.setInt(2, sessionId);  
 
         try (ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {

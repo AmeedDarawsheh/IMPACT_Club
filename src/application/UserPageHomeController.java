@@ -28,7 +28,7 @@ public class UserPageHomeController implements Initializable{
 	@FXML
 	private ProgressBar CPP, IPT;
  	@FXML
-    private ListView<String> UPEvent; // Add Comming Tasks 
+    private ListView<String> UPEvent; 
  	int pointMem;int nextTierPoint;
  	DatabaseConnection database=new DatabaseConnection();
  	Connection con=database.getConnection();
@@ -45,7 +45,7 @@ public class UserPageHomeController implements Initializable{
     ObservableList<Member> members;
     String selectedEmail;
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	
 		
 		System.out.println("UserPageHome.fxml has been loaded!");
 		pointMem=UserPageConreoller.getpoints();
@@ -61,7 +61,7 @@ public class UserPageHomeController implements Initializable{
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty()) {
                     Member selectedMember = row.getItem();
-                    selectedEmail = selectedMember.getEmail(); // Assuming getEmail() returns the email of the member
+                    selectedEmail = selectedMember.getEmail(); 
                 }
             });
             return row;
@@ -74,7 +74,7 @@ public class UserPageHomeController implements Initializable{
 @FXML
 public void sendMailToColleague(ActionEvent event) {
     if (selectedEmail != null) {
-        // Show input dialog to enter message content
+
         TextInputDialog inputDialog = new TextInputDialog();
         inputDialog.setTitle("Send Message");
         inputDialog.setHeaderText("Enter the message content to send to " + selectedEmail);
@@ -83,7 +83,7 @@ public void sendMailToColleague(ActionEvent event) {
         Optional<String> result = inputDialog.showAndWait();
         result.ifPresent(messageContent -> {
             if (!messageContent.isEmpty()) {
-                // Create UserMessageSend object with the required details
+            
                 UserMessageSend message = new UserMessageSend(selectedEmail, getUsernameByMemberId(loginController.getLoggedInMemberId()), messageContent,"Contact with colleague in IMPACT Club");
                 boolean success = message.sendEmail();
 
@@ -110,15 +110,14 @@ public String getUsernameByMemberId(int memberId) {
     try (
          PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-        // Set the memberId parameter in the query
         pstmt.setInt(1, memberId);
 
-        // Execute the query
+       
         ResultSet rs = pstmt.executeQuery();
 
-        // Check if the result contains a row
+       
         if (rs.next()) {
-            // Get the user_name from the result
+           
             userName = rs.getString("user_name");
         }
     } catch (SQLException e) {
@@ -166,11 +165,11 @@ public String getUsernameByMemberId(int memberId) {
 
 	void whenrun() {
 		
-        medale.setText("You have " + medales(pointMem) + " Medal");  // Example points passed to `medales`
+        medale.setText("You have " + medales(pointMem) + " Medal"); 
         lastpoint.setText("Next Tier After " +nextTierPoint + " Points");  
         points.setText(""+pointMem);  
-        eventsNumber.setText("3 New");  // Tasks in this Project
-        progress.setText("Progress: " + 60 + "%");  // Placeholder progress
+        eventsNumber.setText("3 New");  
+        progress.setText("Progress: " + 60 + "%");  
         double progressPercentage = (100-(nextTierPoint)) / 100.0;
         CPP.setProgress(0.6);
         IPT.setProgress(progressPercentage);
@@ -182,7 +181,7 @@ public String getUsernameByMemberId(int memberId) {
 	void loadCurrentProject() {
 	    String query = "SELECT projectname, description, projectstatus FROM \"IMPACT Club\".project WHERE projectstatus = 'In Progress' LIMIT 1";
 	    
-	    try (Connection conn = database.getConnection(); // Replace with your connection method
+	    try (Connection conn = database.getConnection(); 
 	         PreparedStatement pstmt = conn.prepareStatement(query)) {
 	         
 	        ResultSet rs = pstmt.executeQuery();

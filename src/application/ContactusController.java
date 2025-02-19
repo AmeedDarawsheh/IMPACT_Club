@@ -46,7 +46,7 @@ private TextArea commentArea;
 
 public void sendEmail(String subject, String messageContent) {
     // Email to send to
-    final String toEmail = "impactclubalnaqoura@gmail.com";
+    final String toEmail = "";
     
     final String password = "gdlw qrlm xalu yqho"; // Your password
 String fromEmail = emailField.getText();

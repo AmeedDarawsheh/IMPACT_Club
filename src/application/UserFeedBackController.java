@@ -30,8 +30,7 @@ public class UserFeedBackController implements Initializable{
 	public void Send(ActionEvent e) {
 	
 		String feed = text.getText();
-		
-		// get user email  and send email to club  have a subject "feedback from user " and text 
+	
 		
 		
 	}
@@ -41,9 +40,7 @@ public class UserFeedBackController implements Initializable{
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		
-		// fill User Projects Done Only
 		
 	}
 	public void setFeedback(int memberId, int pId,boolean isproject) {
@@ -61,7 +58,6 @@ public class UserFeedBackController implements Initializable{
     	if(project) {
         String feedback = feedbackTextArea.getText();
 
-        // SQL to update feedback in the database
         String query = """
             UPDATE "IMPACT Club".memberproject
             SET projectfeedback = ?
@@ -119,7 +115,7 @@ public class UserFeedBackController implements Initializable{
     	            }
     	        } catch (SQLException e) {
     	            e.printStackTrace();
-    	            // Show error alert
+    	           
     	            Alert alert = new Alert(Alert.AlertType.ERROR);
     	            alert.setTitle("Database Error");
     	            alert.setHeaderText(null);

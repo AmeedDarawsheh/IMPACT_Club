@@ -38,18 +38,18 @@ public class UserPageConreoller implements Initializable{
 	 private ToggleButton  themeToggleButton;	
 	 @FXML
 	    private void toggleTheme() {	 		 
-	        Scene scene = themeToggleButton.getScene(); // Get the current scene
+	        Scene scene = themeToggleButton.getScene(); 
 
 	        if (isDarkTheme) {
-	            // Switch to light theme
+	           
 	            scene.getStylesheets().remove("/style.css");
-	        //	pane2.setStyle("-fx-background-color: #ffffff;");
+	        pane2.setStyle("-fx-background-color: #ffffff;");
 	            isDarkTheme = false;
 	            themeToggleButton.setText("🌙");
 	        } else {
-	            // Switch to dark theme
+
 	            scene.getStylesheets().add("/style.css");
-	      //  	pane2.setStyle("-fx-background-color: #2E3436;");
+	      	pane2.setStyle("-fx-background-color: #2E3436;");
 	       
 	            isDarkTheme = true;
 	            themeToggleButton.setText("🌞");
@@ -107,7 +107,7 @@ public class UserPageConreoller implements Initializable{
 			stackPane.getChildren().removeAll();
 			stackPane.getChildren().setAll(fxml);	
 		}
-	 public void session(ActionEvent e) throws IOException {	
+	public void session(ActionEvent e) throws IOException {	
 		 	Parent fxml = FXMLLoader.load(getClass().getResource("UserSessionPage.fxml"));
 		 	
 			stackPane.getChildren().removeAll();

@@ -15,9 +15,9 @@ import javafx.scene.control.Alert;
 public class SendEmail {
 	String toEmail;
 	final String password = "ntsy xkaf luvw lqtq";
-	String fromEmail="impactclubalnaqoura@gmail.com";
+	String fromEmail="";
 	public  SendEmail(String toEmail ,String subject, String messageContent) {
-	    // Email to send to
+	  
 	    this.toEmail=toEmail;
 	    Properties props = new Properties();
 	    props.put("mail.smtp.host", "smtp.gmail.com");

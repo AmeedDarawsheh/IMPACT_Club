@@ -22,22 +22,22 @@ public class PersonInProject {
     public int getProjectInvolvementLevel() { return projectInvolvementLevel; }
 
 	public void setRoleInProject(String newValue) {
-		// TODO Auto-generated method stub
+
 		roleInProject=newValue;
 	}
 
 	public void setFeedback(String newValue) {
-		// TODO Auto-generated method stub
+		
 		feedback=newValue;
 	}
 
 	public void setName(String newValue) {
-		// TODO Auto-generated method stub
+		
 		name=newValue;
 	}
 
 	public void setProjectInvolvementLevel(Integer newValue) {
-		// TODO Auto-generated method stub
+		
 		projectInvolvementLevel=newValue;
 	}
 }
